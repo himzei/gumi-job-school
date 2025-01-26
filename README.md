@@ -5,3 +5,7 @@
 "[prisma]": {
   "editor.defaultFormatter": "Prisma.prisma"
 }, -->
+
+#### prisma setting
+
+#### https://www.sheltonma.top/blog/prisma_with_nextjs
