@@ -1,4 +1,6 @@
 import { UploadDropzoneClient } from "@/app/api/uploadthing/UploadDropzoneClient";
+import TailwindEditor from "@/app/components/dashboard/EditorWrapper";
+import { TailwindEditorClient } from "@/app/components/dashboard/TailwindEditorClient";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,6 +21,7 @@ export default async function ArticleCreationRoute({
   params: { siteId: string };
 }) {
   const { siteId } = await params;
+
   return (
     <>
       <div className="flex items-center">
@@ -68,6 +71,13 @@ export default async function ArticleCreationRoute({
               <Label>Cover Image</Label>
               <UploadDropzoneClient />
             </div>
+
+            <div className="grid gap-2">
+              <Label>Article Content</Label>
+              <TailwindEditorClient />
+            </div>
+
+            <Button className="w-fit">Submit</Button>
           </form>
         </CardContent>
       </Card>
