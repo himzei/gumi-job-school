@@ -37,11 +37,31 @@ export default async function SiteIdRoute({
   if (!user) {
     return redirect("/api/auth/login");
   }
-
-  const data = await getData(user.id, params.siteId);
+  const { siteId } = await params;
+  const data = await getData(user.id, siteId);
 
   return (
     <>
+      <div className="flex w-full justify-end gap-x-4 ">
+        <Button asChild variant="secondary">
+          <Link href="#">
+            <Book className="size-4" />
+            블로그 보기
+          </Link>
+        </Button>
+        <Button asChild variant="secondary">
+          <Link href="#">
+            <Settings className="size-4" />
+            세팅
+          </Link>
+        </Button>
+        <Button asChild>
+          <Link href={`/dashboard/sites/${siteId}/create`}>
+            <PlusCircle className="size-4" />
+            글쓰기
+          </Link>
+        </Button>
+      </div>
       {data === undefined || data.length === 0 ? (
         <div
           className="flex flex-col items-center justify-center rounded-md border border-dashed p-8 text-center animate-in 
@@ -55,33 +75,14 @@ export default async function SiteIdRoute({
             현재 생성된 사이트가 없습니다. 새로운 사이트를 만들어 주세요!
           </p>
           <Button asChild>
-            <Link href="/dashboard/sites/new">
+            <Link href={`/dashboard/sites/${siteId}/create`}>
               <PlusCircle className="size-4" />
               사이트 만들기
             </Link>
           </Button>
         </div>
       ) : (
-        <div className="flex w-full justify-end gap-x-4 ">
-          <Button asChild variant="secondary">
-            <Link href="#">
-              <Book className="size-4" />
-              블로그 보기
-            </Link>
-          </Button>
-          <Button asChild variant="secondary">
-            <Link href="#">
-              <Settings className="size-4" />
-              세팅
-            </Link>
-          </Button>
-          <Button asChild>
-            <Link href="#">
-              <PlusCircle className="size-4" />
-              글쓰기
-            </Link>
-          </Button>
-        </div>
+        <div></div>
       )}
     </>
   );
