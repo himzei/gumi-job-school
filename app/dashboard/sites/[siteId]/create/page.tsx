@@ -1,7 +1,8 @@
 "use client";
 
 import { CreatePostAction } from "@/app/actions";
-import { TailwindEditorClient } from "@/app/components/dashboard/TailwindEditorClient";
+import TailwindEditor from "@/app/components/dashboard/EditorWrapper";
+import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
 import { UploadDropzone } from "@/app/utils/Uploadthingcomponents";
 import { PostSchema } from "@/app/utils/zodSchemas";
 import { Button } from "@/components/ui/button";
@@ -21,13 +22,19 @@ import { ArrowLeft, Atom } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { JSONContent } from "novel";
 import { useActionState, useState } from "react";
 import { toast } from "sonner";
 
 export default function ArticleCreationRoute() {
   const params = useParams<{ siteId: string }>();
-  const [imageUrl, setImageUrl] = useState<undefined | string>(undefined);
+
+  const [imageUrl, setImageUrl] = useState("");
+  const [title, setTitle] = useState("");
+  const [slug, setSlugValue] = useState("");
+  const [value, setValue] = useState<JSONContent>();
   const [lastResult, action] = useActionState(CreatePostAction, undefined);
+
   const [form, fields] = useForm({
     lastResult,
 
@@ -38,6 +45,18 @@ export default function ArticleCreationRoute() {
     shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
   });
+
+  function handleSlugGeneration() {
+    const titleInput = title;
+
+    if (titleInput?.length === 0 || titleInput === undefined) {
+      return toast.error("제목을 먼저 작성해 주세요");
+    }
+
+    setSlugValue(titleInput.replace(" ", "-"));
+
+    return toast.success("Slug가 작성되었습니다.");
+  }
   return (
     <>
       <div className="flex items-center">
@@ -54,9 +73,7 @@ export default function ArticleCreationRoute() {
           <CardTitle>Article Detail</CardTitle>
           <CardDescription>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-            excepturi distinctio animi nulla hic aliquam saepe itaque. Et itaque
-            vero cupiditate sint suscipit iure corrupti nulla expedita,
-            exercitationem voluptatibus harum.
+            excepturi
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -66,6 +83,7 @@ export default function ArticleCreationRoute() {
             onSubmit={form.onSubmit}
             action={action}
           >
+            <input type="hidden" name="siteId" value={params.siteId} />
             <div className="grid gap-2">
               <Label>Title</Label>
               <Input
@@ -73,6 +91,7 @@ export default function ArticleCreationRoute() {
                 name={fields.title.name}
                 defaultValue={fields.title.initialValue}
                 placeholder="Nextjs blogging application"
+                onChange={(e) => setTitle(e.target.value)}
               />
               <p className="text-red-500 text-sm">{fields.title.errors}</p>
             </div>
@@ -84,8 +103,15 @@ export default function ArticleCreationRoute() {
                 key={fields.slug.key}
                 name={fields.slug.name}
                 defaultValue={fields.slug.initialValue}
+                onChange={(e) => setSlugValue(e.target.value)}
+                value={slug}
               />
-              <Button className="w-fit" variant="secondary" type="button">
+              <Button
+                onClick={handleSlugGeneration}
+                className="w-fit"
+                variant="secondary"
+                type="button"
+              >
                 <Atom className="size-4 mr-2" />
                 Generate Slug
               </Button>
@@ -140,10 +166,20 @@ export default function ArticleCreationRoute() {
 
             <div className="grid gap-2">
               <Label>Article Content</Label>
-              <TailwindEditorClient />
+              <input
+                type="hidden"
+                name={fields.articleContent.name}
+                key={fields.articleContent.key}
+                defaultValue={fields.articleContent.initialValue}
+                value={JSON.stringify(value)}
+              />
+              <TailwindEditor onChange={setValue} initialValue={value} />
+              <p className="text-red-500 text-sm">
+                {fields.articleContent.errors}
+              </p>
             </div>
 
-            <Button className="w-fit">Submit</Button>
+            <SubmitButton text="작성하기" />
           </form>
         </CardContent>
       </Card>
