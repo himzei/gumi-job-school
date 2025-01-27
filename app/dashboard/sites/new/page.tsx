@@ -17,6 +17,7 @@ import { useActionState } from "react";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { siteSchema } from "@/app/utils/zodSchemas";
+import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
 
 export default function NewSiteRoute() {
   const [lastResult, action] = useActionState(CreateSiteAction, undefined);
@@ -84,7 +85,7 @@ export default function NewSiteRoute() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button>생성하기</Button>
+            <SubmitButton text="사이트 생성하기" />
           </CardFooter>
         </form>
       </Card>
