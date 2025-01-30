@@ -1,10 +1,14 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Check } from "lucide-react";
+import { SubmitButton } from "../SubmitButton";
 
 interface iAppProps {
   id: number;
@@ -44,7 +48,7 @@ export const PricingPlans: iAppProps[] = [
 export function PricingTable() {
   return (
     <>
-      <div className="max-w-4xml mx-auto text-center">
+      <div className="max-w-3xl mx-auto text-center">
         <p className="font-semibold text-primary">Pricing</p>
         <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
           Pricing Plans
@@ -58,16 +62,49 @@ export function PricingTable() {
         natus accusamus.
       </p>
 
-      <div className="grid gird-cols-1 gap-8 mt-5 lg:grid-cols-2">
+      <div className="grid gird-cols-1 gap-8 mt-16 lg:grid-cols-2">
         {PricingPlans.map((item) => (
-          <Card key={item.id}>
+          <Card
+            key={item.id}
+            className={item.id === 1 ? "border border-primary" : ""}
+          >
             <CardHeader>
-              <CardTitle>{item.cardTitle}</CardTitle>
+              <CardTitle>
+                {item.id === 1 ? (
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-primary">Stratup</h3>
+                    <p className="rounded-full bg-primary/20 px-3 py-1 text-xs leading-5 text-primary">
+                      국비지원
+                    </p>
+                  </div>
+                ) : (
+                  <>{item.cardTitle}</>
+                )}
+              </CardTitle>
               <CardDescription>{item.cardDescription}</CardDescription>
             </CardHeader>
             <CardContent>
               <p>{item.priceTitle}</p>
+              <ul className="mt-8 space-y-3 text-sm leading-6 text-muted-foreground">
+                {item.benefits.map((benefit, index) => (
+                  <li key={index} className="flex gap-x-3">
+                    <Check className="text-primary size-5" />
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
             </CardContent>
+            <CardFooter>
+              {item.id === 1 ? (
+                <form className="w-full">
+                  <SubmitButton text="buy plan" className="mt-5 w-full" />
+                </form>
+              ) : (
+                <Button variant="outline" className="mt-5 w-full">
+                  Choose Plan
+                </Button>
+              )}
+            </CardFooter>
           </Card>
         ))}
       </div>
