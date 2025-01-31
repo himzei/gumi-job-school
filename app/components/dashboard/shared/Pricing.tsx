@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { SubmitButton } from "../SubmitButton";
+import Link from "next/link";
+import { CreateSubscription } from "@/app/actions";
 
 interface iAppProps {
   id: number;
@@ -96,12 +98,12 @@ export function PricingTable() {
             </CardContent>
             <CardFooter>
               {item.id === 1 ? (
-                <form className="w-full">
+                <form className="w-full" action={CreateSubscription}>
                   <SubmitButton text="buy plan" className="mt-5 w-full" />
                 </form>
               ) : (
-                <Button variant="outline" className="mt-5 w-full">
-                  Choose Plan
+                <Button variant="outline" className="mt-5 w-full" asChild>
+                  <Link href="/dashboard">Choose Plan</Link>
                 </Button>
               )}
             </CardFooter>
