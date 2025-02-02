@@ -1,4 +1,3 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Hero } from "./components/frontend/Hero";
 import MainSlide from "./components/frontend/MainSlide";
 import { PricingTable } from "./components/dashboard/shared/Pricing";
