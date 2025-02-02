@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import { JSONContent } from "novel";
 
 interface PageProps {
-  params: { slug: string; name: string };
+  params: Promise<{ slug: string; name: string }>;
 }
 
 async function getData(slug: string) {
@@ -33,7 +33,7 @@ async function getData(slug: string) {
 }
 
 export default async function SlugRoute({ params }: PageProps) {
-  const { slug, name } = params as { slug: string; name: string };
+  const { slug, name } = await params;
 
   const data = await getData(slug);
 
