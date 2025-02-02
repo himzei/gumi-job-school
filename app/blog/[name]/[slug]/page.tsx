@@ -7,9 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JSONContent } from "novel";
 
-type PageProps = {
-  params: Promise<{ slug: string; name: string }>; // Promise 제거하고 동기적 타입으로 수정
-};
+type PageProps = Promise<{ slug: string; name: string }>; // Promise 제거하고 동기적 타입으로 수정
 
 async function getData(slug: string) {
   const data = await prisma.post.findUnique({
@@ -32,10 +30,8 @@ async function getData(slug: string) {
   return data;
 }
 
-export default async function SlugRoute({ params }: PageProps) {
-  const resolveParams = await params;
-  const slug = resolveParams?.slug || "Unknown";
-  const name = resolveParams?.name || "Unknown";
+export default async function SlugRoute({ params }: { params: PageProps }) {
+  const { slug, name } = await params;
 
   const data = await getData(slug);
   return (
