@@ -33,7 +33,8 @@ async function getData(slug: string) {
 }
 
 export default async function SlugRoute({ params }: PageProps) {
-  const { slug, name } = params;
+  const { slug } = await params;
+  const { name } = await params;
 
   const data = await getData(slug);
 
