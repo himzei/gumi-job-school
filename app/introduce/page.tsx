@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { TitleRotate } from "../components/frontend/TitleRotate";
 import Consulting from "./components/Consulting";
 import Features from "./components/Features";

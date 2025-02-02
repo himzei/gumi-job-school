@@ -20,7 +20,7 @@ import { UpdateImageAction } from "@/app/actions";
 //   siteId: string;
 // }
 
-export function UploadImageForm({ siteId }: { siteId: string }) {
+export function UploadImageForm() {
   const [imageUrl, setImageUrl] = useState<string>("");
   const params = useParams<{ siteId: string }>();
   return (

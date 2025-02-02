@@ -46,7 +46,7 @@ const TailwindEditor = ({ onChange, initialValue }: EditorProps) => {
             No results
           </EditorCommandEmpty>
           <EditorCommandList>
-            {suggestionItems.map((item: any) => (
+            {suggestionItems.map((item) => (
               <EditorCommandItem
                 value={item.title}
                 onCommand={(val) => item.command?.(val)}

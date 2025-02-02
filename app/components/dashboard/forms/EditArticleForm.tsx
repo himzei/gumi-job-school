@@ -19,7 +19,7 @@ import { useActionState, useState } from "react";
 import { JSONContent } from "novel";
 import { parseWithZod } from "@conform-to/zod";
 import { PostSchema } from "@/app/utils/zodSchemas";
-import { CreatePostAction, EditPostAction } from "@/app/actions";
+import { EditPostAction } from "@/app/actions";
 import { toast } from "sonner";
 import TailwindEditor from "../EditorWrapper";
 import { SubmitButton } from "../SubmitButton";

@@ -116,7 +116,7 @@ export async function EditPostAction(prevState: any, formData: FormData) {
 
 export async function DeletePostAction(formData: FormData) {
   const user = await requireUser();
-  const data = await prisma.post.delete({
+  await prisma.post.delete({
     where: {
       userId: user.id,
       id: formData.get("articleId") as string,

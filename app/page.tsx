@@ -1,16 +1,11 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Hero } from "./components/frontend/Hero";
-import { Features } from "./components/frontend/Features";
 import MainSlide from "./components/frontend/MainSlide";
 import { PricingTable } from "./components/dashboard/shared/Pricing";
 import { Footer } from "./components/frontend/Footer";
-import { Articles } from "./components/sites/Articles";
 import { TitleRotate } from "./components/frontend/TitleRotate";
 
 export default async function Home() {
-  const { getUser } = getKindeServerSession();
-  const session = await getUser();
-
   return (
     <>
       <section className=" mx-auto ">

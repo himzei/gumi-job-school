@@ -1,5 +1,4 @@
 import { AiOutlinePlus } from "react-icons/ai";
-import CityImg from "@/public/introduce/city.jpg";
 import FeatureImg3 from "@/public/introduce/application.jpg";
 import FeatureImg4 from "@/public/introduce/accounting.jpg";
 import FeatureImg5 from "@/public/introduce/bigdata.jpg";

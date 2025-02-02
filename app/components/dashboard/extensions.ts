@@ -13,7 +13,7 @@ import { cx } from "class-variance-authority";
 
 // You can overwrite the placeholder with your own configuration
 const placeholder = Placeholder;
-const tiptapLink = TiptapLink.configure({
+TiptapLink.configure({
   HTMLAttributes: {
     class: cx(
       "text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer"

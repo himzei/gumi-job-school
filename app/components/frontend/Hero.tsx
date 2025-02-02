@@ -10,7 +10,7 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { FaSearch } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { IoMenuSharp } from "react-icons/io5";
 import { FiMenu, FiX } from "react-icons/fi";
 import { MdArrowForwardIos } from "react-icons/md";
@@ -126,10 +126,7 @@ const MENUS = [
 ];
 
 export function Hero() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [logoSize, setLogoSize] = useState(false);
-
   const [menuContent, setMenuContent] = useState();
   const showFlyout = menuContent && menuOpen;
   return (
@@ -137,12 +134,7 @@ export function Hero() {
       <MenuOpenContext.Provider
         value={{ menuOpen, setMenuOpen, setMenuContent }}
       >
-        <div
-          className="sticky top-0 z-[99] transition-all duration-700"
-          style={{
-            transform: `${scrolled ? "translateY(-80px)" : "translateY(0)"}`,
-          }}
-        >
+        <div className="sticky top-0 z-[99] transition-all duration-700">
           <div className="max-w-7xl mx-auto w-full h-16 flex justify-center ">
             <div className="relative w-full h-full flex justify-between items-center  text-xs">
               {/* login */}
@@ -179,15 +171,9 @@ export function Hero() {
               </div>
               {/* 로고 : absolute */}
               <div className="absolute top-0 left-[50%] -translate-x-[50%] h-12 ">
-                {logoSize ? (
-                  <Link href="/">
-                    <div className="h-full"></div>
-                  </Link>
-                ) : (
-                  <Link href="/">
-                    <div className="h-full"></div>
-                  </Link>
-                )}
+                <Link href="/">
+                  <div className="h-full"></div>
+                </Link>
               </div>
             </div>
           </div>

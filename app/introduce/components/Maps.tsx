@@ -28,7 +28,7 @@ export function GoogleMap() {
       };
       const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
 
-      const marker = new Marker({
+      new Marker({
         map: map,
         position: position,
       });

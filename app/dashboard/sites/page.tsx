@@ -1,18 +1,9 @@
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { PlusCircle } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import DefaultImage from "@/public/default.png";
 import { EmptyState } from "@/app/components/dashboard/EmptyState";
 import { Articles } from "@/app/components/sites/Articles";
 
