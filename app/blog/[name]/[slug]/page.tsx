@@ -7,7 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JSONContent } from "novel";
 
-type PageProps = Promise<{ slug: string; name: string }>; // Promise 제거하고 동기적 타입으로 수정
+type PageProps = Promise<{ slug: string; name?: string }>; // Promise 제거하고 동기적 타입으로 수정
 
 async function getData(slug: string) {
   const data = await prisma.post.findUnique({
