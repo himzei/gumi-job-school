@@ -34,7 +34,9 @@ export default async function SlugRoute({
   params: { slug: string; name: string };
 }) {
   const { slug, name } = await params;
+
   const data = await getData(slug);
+
   return (
     <>
       <div className="flex items-center gap-x-3 pt-10 pb-5">
@@ -49,7 +51,7 @@ export default async function SlugRoute({
       <div className="flex flex-col items-center justify-center mb-10">
         <div className="m-auto w-full text-center md:w-7/12">
           <p className="m-auto my-5 w-10/12 text-sm font-light text-muted-foreground md:text-base">
-            {new Intl.DateTimeFormat("ko-KR", {
+            {new Intl.DateTimeFormat("en-US", {
               dateStyle: "medium",
             }).format(data.createdAt)}
           </p>
