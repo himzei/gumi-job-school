@@ -103,7 +103,7 @@ const MobileMenu = () => {
 const MENUS = [
   {
     text: "기관소개",
-    href: "/characters",
+    href: "/introduce",
     // component: NewsComponent,
   },
   {
@@ -157,9 +157,11 @@ export function Hero() {
                 </RegisterLink>
               </div>
               <div>
-                <h1 className="text-2xl font-bold tracking-tighter">
-                  한국<span className="text-primary">직업</span>교육학원
-                </h1>
+                <Link href="/">
+                  <h1 className="text-2xl font-bold tracking-tighter">
+                    한국<span className="text-primary">직업</span>교육학원
+                  </h1>
+                </Link>
               </div>
               {/* mobile 메뉴 */}
               <MobileMenu />
@@ -190,7 +192,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="w-full bg-muted h-10 border-t border-slate-300 hidden md:flex justify-center uppercase items-center space-x-8">
+          <div className="w-full bg-muted h-10 border-t  border-slate-300 hidden md:flex justify-center uppercase items-center space-x-8">
             {MENUS.map((menu) => (
               <NavLink
                 key={menu.text}

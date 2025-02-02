@@ -1,30 +1,12 @@
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { Hero } from "./components/frontend/Hero";
-import { Features } from "./components/frontend/Features";
-import MainSlide from "./components/frontend/MainSlide";
-import { PricingTable } from "./components/dashboard/shared/Pricing";
-import { Footer } from "./components/frontend/Footer";
-import { Articles } from "./components/sites/Articles";
-import { TitleRotate } from "./components/frontend/TitleRotate";
+import Image from "next/image";
+import { TitleRotate } from "../components/frontend/TitleRotate";
+import Consulting from "./components/Consulting";
+import Features from "./components/Features";
+import { Poster } from "./components/Poster";
 
-export default async function Home() {
-  const { getUser } = getKindeServerSession();
-  const session = await getUser();
-
+export default function IntroducePage() {
   return (
     <>
-      <section className=" mx-auto ">
-        <Hero />
-      </section>
-      <section className="w-full mx-auto">
-        <MainSlide />
-      </section>
-      <section className="w-full mx-auto  py-16">
-        <div className="max-w-7xl w-full mx-auto">
-          <PricingTable />
-        </div>
-      </section>
-
       <section>
         <div className="relative w-full h-[500px] flex justify-end border-t border-b border-gray-700">
           <div
@@ -55,10 +37,22 @@ export default async function Home() {
           <div className="max-w-7xl w-full mx-auto bg-white shadow-lg"></div>
         </div>
       </section>
-
-      <section className="bg-muted">
-        <Footer />
-      </section>
+      <div>
+        <Features />
+      </div>
+      <div>
+        <Poster />
+      </div>
+      <div className="relative">
+        <img
+          className="w-full h-[1000px] object-cover"
+          src="https://images.unsplash.com/photo-1579546929556-bf8352f5889c?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="background"
+        />
+        <div className="absolute inset-0 w-full h-full flex items-center">
+          <Consulting />
+        </div>
+      </div>
     </>
   );
 }

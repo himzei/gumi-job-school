@@ -14,6 +14,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import DefaultImage from "@/public/default.png";
 import { EmptyState } from "@/app/components/dashboard/EmptyState";
+import { Articles } from "@/app/components/sites/Articles";
 
 async function getData(userId: string) {
   const data = await prisma.site.findMany({
@@ -56,30 +57,7 @@ export default async function SitesRoute() {
           href="/dashboard/sites/new"
         />
       ) : (
-        <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
-          {data.map((item) => (
-            <Card key={item.id}>
-              <Image
-                src={item.imageUrl ?? DefaultImage}
-                alt={item.name}
-                className="rounded-t-lg object-cover w-full h-[200px] "
-                width={400}
-                height={200}
-              />
-              <CardHeader>
-                <CardTitle className="truncate">{item.name}</CardTitle>
-                <CardDescription className="line-clamp-3">
-                  {item.description}
-                </CardDescription>
-              </CardHeader>
-              <CardFooter>
-                <Button asChild className="w-full">
-                  <Link href={`/dashboard/sites/${item.id}`}>자세히보기</Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
-        </div>
+        <Articles />
       )}
     </>
   );

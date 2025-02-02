@@ -28,7 +28,7 @@ const features = [
 ];
 export function Features() {
   return (
-    <div className="py-16 bg-red-500">
+    <div className="py-16">
       <div className="max-w-4xl mx-auto lg:text-center">
         <p className="font-semibold text-primary">Blog Faster</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
