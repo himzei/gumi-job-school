@@ -7,9 +7,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JSONContent } from "novel";
 
-interface PageProps {
+type PageProps = {
   params: Promise<{ slug: string; name: string }>; // Promise 제거하고 동기적 타입으로 수정
-}
+};
 
 async function getData(slug: string) {
   const data = await prisma.post.findUnique({
@@ -33,7 +33,10 @@ async function getData(slug: string) {
 }
 
 export default async function SlugRoute({ params }: PageProps) {
-  const { name, slug } = await params;
+  const resolveParams = await params;
+  const slug = resolveParams?.slug || "Unknown";
+  const name = resolveParams?.name || "Unknown";
+
   const data = await getData(slug);
   return (
     <>
