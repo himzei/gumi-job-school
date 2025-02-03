@@ -215,12 +215,14 @@ export async function SendMailAction(prevState: any, formData: FormData) {
     return submission.reply();
   }
 
-  return await fetch(`${process.env.BASE_URL}/api/email`, {
+  const apiEndpoint = `${process.env.BASE_URL}/api/email`;
+
+  return await fetch(apiEndpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-
+    credentials: "include",
     body: JSON.stringify({
       name: formData.get("name") as string,
       email: formData.get("email") as string,
