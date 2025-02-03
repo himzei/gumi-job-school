@@ -5,6 +5,10 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+interface iAppProps {
+  params: Promise<{ siteId: string; articleId: string }>;
+}
+
 async function getData(postId: string) {
   const data = await prisma.post.findUnique({
     where: {
@@ -27,11 +31,7 @@ async function getData(postId: string) {
   return data;
 }
 
-export default async function EditRoute({
-  params,
-}: {
-  params: { siteId: string; articleId: string };
-}) {
+export default async function EditRoute({ params }: iAppProps) {
   const { siteId, articleId } = await params;
   const data = await getData(articleId);
   return (
