@@ -14,6 +14,10 @@ import DefaultImage from "@/public/default.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+interface iAppProps {
+  params: Promise<{ name: string }>;
+}
+
 async function getData(subDir: string) {
   const data = await prisma.site.findUnique({
     where: {
@@ -44,11 +48,7 @@ async function getData(subDir: string) {
   return data;
 }
 
-export default async function BlogIndexPage({
-  params,
-}: {
-  params: { name: string };
-}) {
+export default async function BlogIndexPage({ params }: iAppProps) {
   const { name } = await params;
   const data = await getData(name);
   return (
