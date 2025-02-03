@@ -12,11 +12,11 @@ import {
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
-export default async function SettingsSiteRoute({
-  params,
-}: {
-  params: { siteId: string };
-}) {
+interface iAppProps {
+  params: Promise<{ siteId: string }>;
+}
+
+export default async function SettingsSiteRoute({ params }: iAppProps) {
   const { siteId } = await params;
   return (
     <>
@@ -29,7 +29,7 @@ export default async function SettingsSiteRoute({
         <h3 className="text-xl font-semibold">Go back</h3>
       </div>
 
-      <UploadImageForm siteId={siteId} />
+      <UploadImageForm />
 
       <Card className="border-red-500 bg-red-500/10">
         <CardHeader>
