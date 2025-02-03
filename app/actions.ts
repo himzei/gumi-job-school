@@ -2,7 +2,11 @@
 
 import { redirect } from "next/navigation";
 import { parseWithZod } from "@conform-to/zod";
-import { PostSchema, SiteCreationSchema } from "./utils/zodSchemas";
+import {
+  EmailSchema,
+  PostSchema,
+  SiteCreationSchema,
+} from "./utils/zodSchemas";
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
@@ -200,4 +204,27 @@ export async function CreateSubscription() {
   });
 
   return redirect(session.url as string);
+}
+
+export async function SendMailAction(prevState: any, formData: FormData) {
+  const submission = parseWithZod(formData, {
+    schema: EmailSchema,
+  });
+
+  if (submission.status !== "success") {
+    return submission.reply();
+  }
+
+  return await fetch(`${process.env.BASE_URL}/api/email`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+    }),
+  }).then((res) => res.json());
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import TitleSection from "./TitleSection";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,8 +12,26 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Map } from "./Map";
+import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
+import { useActionState } from "react";
+import { SendMailAction } from "@/app/actions";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { EmailSchema } from "@/app/utils/zodSchemas";
 
 export default function Consulting() {
+  const [lastResult, action] = useActionState(SendMailAction, undefined);
+  const [form, fields] = useForm({
+    lastResult,
+    onValidate({ formData }) {
+      return parseWithZod(formData, {
+        schema: EmailSchema,
+      });
+    },
+
+    shouldValidate: "onBlur",
+    shouldRevalidate: "onInput",
+  });
   return (
     <>
       {/* 다이얼로그 */}
@@ -165,15 +185,35 @@ export default function Consulting() {
                 <p className="text-3xl">054)123-1234</p>
               </div>
             </div>
-            <form>
+            <form id={form.id} onSubmit={form.onSubmit} action={action}>
               <div className="flex flex-col w-full space-y-4">
-                <Input placeholder="성명" />
-
-                {/* 휴대폰번호 */}
-                <Input placeholder="휴대폰" />
-
-                <Input placeholder="이메일" />
-
+                <div className="grid gap-2">
+                  <Input
+                    placeholder="성명"
+                    name={fields.name.name}
+                    key={fields.name.key}
+                    defaultValue={fields.name.initialValue}
+                  />
+                  <p className="text-red-500 text-sm">{fields.name.errors}</p>
+                </div>
+                <div className="grid gap-2">
+                  <Input
+                    placeholder="휴대폰"
+                    name={fields.phone.name}
+                    key={fields.phone.key}
+                    defaultValue={fields.phone.initialValue}
+                  />
+                  <p className="text-red-500 text-sm">{fields.phone.errors}</p>
+                </div>
+                <div className="grid gap-2">
+                  <Input
+                    placeholder="이메일"
+                    name={fields.email.name}
+                    key={fields.email.key}
+                    defaultValue={fields.email.initialValue}
+                  />
+                  <p className="text-red-500 text-sm">{fields.phone.errors}</p>
+                </div>
                 <Select>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="희망하는 과정을 선택해주세요" />
@@ -201,9 +241,11 @@ export default function Consulting() {
                   </div>
                 </div>
 
-                <Button type="submit" color="red">
-                  전송하기
-                </Button>
+                <SubmitButton
+                  className="w-full"
+                  variant="default"
+                  text="전송하기"
+                />
               </div>
             </form>
           </div>

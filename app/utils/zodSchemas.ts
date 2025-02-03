@@ -15,6 +15,12 @@ export const PostSchema = z.object({
   articleContent: z.string().min(1),
 });
 
+export const EmailSchema = z.object({
+  name: z.string().min(1).max(10),
+  email: z.string().min(1).max(40),
+  phone: z.string().min(1).max(12),
+});
+
 export function SiteCreationSchema(options?: {
   isSubdirectoryUnique: () => Promise<boolean>;
 }) {
