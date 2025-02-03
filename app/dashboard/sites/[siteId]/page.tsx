@@ -31,6 +31,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+interface iAppProps {
+  params: Promise<{ siteId: string }>;
+}
+
 async function getData(userId: string, siteId: string) {
   const data = await prisma.post.findMany({
     where: {
@@ -56,11 +60,7 @@ async function getData(userId: string, siteId: string) {
   return data;
 }
 
-export default async function SiteIdRoute({
-  params,
-}: {
-  params: { siteId: string };
-}) {
+export default async function SiteIdRoute({ params }: iAppProps) {
   const { siteId } = await params;
   const { getUser } = getKindeServerSession();
   const user = await getUser();
