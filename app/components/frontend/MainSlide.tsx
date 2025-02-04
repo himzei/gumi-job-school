@@ -24,7 +24,7 @@ const testimonials = [
     back: MainSlide1,
     description: "빅데이터 분석 기반의 멀티 전문인력 양성과정(컴활+FAT+TAT)",
     name: "산업구조변화 대응 특화훈련",
-    title: "산업구조변화 대응 특화훈련",
+    title: "컴활+FAT+TAT과정",
     link: "https://www.daum.net",
     // link2: "https://msn.com",
   },
