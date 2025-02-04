@@ -6,6 +6,7 @@ import { SubPageTitle } from "./components/SubPageTitle";
 import SubImg01 from "@/public/sub/sub001.png";
 import ListCarousel from "./components/frontend/ListCarousel";
 import { TitleRotate } from "./components/frontend/TitleRotate";
+import Features from "./introduce/components/Features";
 
 export default async function Home() {
   return (
@@ -16,7 +17,11 @@ export default async function Home() {
       <section className="w-full mx-auto">
         <MainSlide />
       </section>
-      <section className="w-full mx-auto pt-8 pb-16">
+
+      <section className="w-full mx-auto pt-4 pb-16 border-t border-muted">
+        <Features />
+      </section>
+      <section className="w-full mx-auto py-16 bg-gray-100">
         <div className="max-w-7xl w-full mx-auto">
           <div>
             <TitleRotate

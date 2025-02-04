@@ -53,19 +53,16 @@ const itemLists2 = [
 
 export default function Features() {
   return (
-    <div className="w-full py-16 relative">
-      <div className="w-full h-[650px] absolute bottom-0 -z-10 bg-red-100">
-        <div className="w-full h-full bg-slate-100 opacity-80" />
-        {/* <img
-          src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          className="w-full h-full absolute inset-0"
-          alt="background"
-        /> */}
+    <div className="w-full py-8 relative ">
+      <div className="w-full h-[500px] absolute bottom-0 -z-10 ">
+        <div className="w-full h-full">
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-indigo-500/0 from-10% via-sky-500/20 via-30% to-emerald-500/0 to-90%" />
+        </div>
       </div>
       <section>
-        <div className="w-full flex items-center flex-col space-y-16 px-2">
-          {/* 본문1 */}
-          <div className="max-w-7xl w-full flex mobile:flex-col tablet:flex-row gap-8 relative">
+        {/* 본문1 */}
+        <div className="w-full max-w-7xl flex items-center flex-col space-y-8 p-16 border-4 border-[#c6a972]/30 border-dashed rounded-xl mx-auto">
+          <div className=" w-full flex mobile:flex-col tablet:flex-row gap-8 relative">
             {itemLists1.map((item, i) => (
               <div
                 key={i}
@@ -73,7 +70,7 @@ export default function Features() {
               >
                 {/* title */}
                 <div className="flex px-8 justify-between items-center text-xl">
-                  <h3 className="text-bold text-green-600">{item.number}</h3>
+                  <h3 className="text-bold text-primary">{item.number}</h3>
                   <AiOutlinePlus />
                 </div>
                 {/* contents */}
@@ -83,7 +80,7 @@ export default function Features() {
                 </div>
                 {/* image */}
                 <div className="w-full h-20 relative pl-4">
-                  <div className="w-full h-20 bg-lime-700 translate-x-4 overflow-hidden">
+                  <div className="w-full h-20  translate-x-4 overflow-hidden">
                     <img
                       className="object-cover object-center w-full h-full"
                       src={item.imgUrl}
@@ -103,25 +100,25 @@ export default function Features() {
           </div>
 
           {/* 본문2 */}
-          <div className="max-w-7xl w-full flex mobile:flex-col tablet:flex-row justify-end gap-8">
+          <div className="w-full flex mobile:flex-col tablet:flex-row justify-end gap-8">
             {itemLists2.map((item, i) => (
               <div
                 key={i}
-                className="w-[320px] aspect-square py-10 border border-gray-200 shadow-xl flex flex-col justify-between space-y-8 rounded-lg bg-white"
+                className="w-[320px] aspect-square py-8 border border-gray-200 shadow-xl flex flex-col justify-between space-y-4 rounded-lg bg-white"
               >
                 {/* title */}
                 <div className="flex px-8 justify-between items-center text-xl">
-                  <h3 className="text-bold text-green-600">{item.number}</h3>
+                  <h3 className="text-bold text-primary">{item.number}</h3>
                   <AiOutlinePlus />
                 </div>
                 {/* contents */}
-                <div className="flex flex-col px-8 space-y-3">
+                <div className="flex flex-col px-8 space-y-2">
                   <h2 className="text-2xl font-bold">{item.title}</h2>
-                  <p className="text-gray-700">{item.description}</p>
+                  <p className="text-muted-foreground">{item.description}</p>
                 </div>
                 {/* image */}
                 <div className="w-full h-20 relative pl-4">
-                  <div className="w-full h-20 bg-lime-700 translate-x-4 overflow-hidden">
+                  <div className="w-full h-20 translate-x-4 overflow-hidden">
                     <Image
                       className="object-cover object-center w-full h-full"
                       src={item.imgUrl}

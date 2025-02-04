@@ -19,7 +19,7 @@ export default function TitleSection({
     <div className="w-full flex flex-col space-y-4 tracking-tighter">
       <h2
         className={`uppercase font-semibold ${
-          color === "white" ? "text-white" : "text-red-600"
+          color === "white" ? "text-white" : "text-primary"
         }`}
       >
         {section}

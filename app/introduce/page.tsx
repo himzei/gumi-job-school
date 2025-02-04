@@ -4,10 +4,6 @@ import { Poster } from "./components/Poster";
 import SubImg01 from "@/public/sub/sub001.png";
 import { SubPageTitle } from "../components/SubPageTitle";
 
-type ImageType = {
-  SubImage01: HTMLImageElement;
-};
-
 export default function IntroducePage() {
   return (
     <>
