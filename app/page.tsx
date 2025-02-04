@@ -4,6 +4,7 @@ import { PricingTable } from "./components/dashboard/shared/Pricing";
 import { Footer } from "./components/frontend/Footer";
 import { SubPageTitle } from "./components/SubPageTitle";
 import SubImg01 from "@/public/sub/sub001.png";
+import ListCarousel from "./components/frontend/ListCarousel";
 
 export default async function Home() {
   return (
@@ -22,11 +23,12 @@ export default async function Home() {
 
       <section>
         <SubPageTitle
-          subTitle="기관소개"
-          mainTitle="기관소개"
-          description="회계 기초부터 실무까지, 컴퓨터 기초 활용과 전문 IT 기술까지 체계적으로 교육하는 맞춤 과정 제공"
+          subTitle="blog"
+          mainTitle="블로그"
+          description="한국직업교육학원 유익한 교육 정보와 소식을 제공하는 공간입니다."
           backImg={SubImg01}
         />
+        <ListCarousel />
       </section>
 
       <section className="bg-muted">

@@ -113,15 +113,12 @@ const MENUS = [
   },
   {
     text: "교육신청",
-    href: "#",
+    href: "/education",
   },
-  {
-    text: "고객센터",
-    href: "#",
-  },
+
   {
     text: "커뮤니티",
-    href: "#",
+    href: "/community",
   },
 ];
 
@@ -134,8 +131,8 @@ export function Hero() {
       <MenuOpenContext.Provider
         value={{ menuOpen, setMenuOpen, setMenuContent }}
       >
-        <div className="sticky top-0 z-[99] transition-all duration-700">
-          <div className="max-w-7xl mx-auto w-full h-16 flex justify-center ">
+        <div className="sticky top-0  transition-all duration-700">
+          <div className="max-w-7xl mx-auto w-full h-16 flex justify-center z-10 ">
             <div className="relative w-full h-full flex justify-between items-center  text-xs">
               {/* login */}
               <div className="hidden md:flex uppercase h-full px-4  items-center space-x-2">
@@ -155,21 +152,17 @@ export function Hero() {
                   </h1>
                 </Link>
               </div>
-              {/* mobile 메뉴 */}
               <MobileMenu />
-              {/* 메뉴 아이콘 */}
               <div className="block md:hidden px-4 cursor-pointer text-2xl">
                 <IoMenuSharp />
               </div>
-              {/* search */}
-              <div className="px-4 h-full flex md:space-x-4 items-center ">
+              <div className="px-4 h-full flex md:space-x-4 items-center z-10">
                 <ThemeToggle />
-                {/* search */}
                 <div className="text-lg">
                   <FaSearch />
                 </div>
               </div>
-              {/* 로고 : absolute */}
+
               <div className="absolute top-0 left-[50%] -translate-x-[50%] h-12 ">
                 <Link href="/">
                   <div className="h-full"></div>
@@ -178,7 +171,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="w-full bg-muted h-10 border-t  border-slate-300 hidden md:flex justify-center uppercase items-center space-x-8">
+          <div className="w-full bg-muted h-10 border-t -z-10 border-slate-300 hidden md:flex justify-center uppercase items-center space-x-8">
             {MENUS.map((menu) => (
               <NavLink
                 key={menu.text}
