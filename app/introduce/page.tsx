@@ -1,7 +1,13 @@
+import Image from "next/image";
 import { TitleRotate } from "../components/frontend/TitleRotate";
 import Consulting from "./components/Consulting";
 import Features from "./components/Features";
 import { Poster } from "./components/Poster";
+import SubImg01 from "@/public/sub/sub001.png";
+
+type ImageType = {
+  SubImage01: HTMLImageElement;
+};
 
 export default function IntroducePage() {
   return (
@@ -14,8 +20,9 @@ export default function IntroducePage() {
               clipPath: "polygon(0 0, 100% 0, 100% 100%, 20% 100%)",
             }}
           >
-            <img
-              src="https://wallpapers.com/images/high/marvel-pictures-2jubj1we7xoo8b6g.webp"
+            <Image
+              fill
+              src={SubImg01}
               className="w-full h-full object-cover"
               alt="title-img"
             />
