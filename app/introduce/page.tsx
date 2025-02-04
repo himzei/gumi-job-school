@@ -3,6 +3,7 @@ import Features from "./components/Features";
 import { Poster } from "./components/Poster";
 import SubImg01 from "@/public/sub/sub001.png";
 import { SubPageTitle } from "../components/SubPageTitle";
+import Maps from "./components/Maps";
 
 export default function IntroducePage() {
   return (
@@ -28,6 +29,9 @@ export default function IntroducePage() {
         <div className="absolute inset-0 w-full h-full flex items-center">
           <Consulting />
         </div>
+      </div>
+      <div>
+        <Maps />
       </div>
     </>
   );
