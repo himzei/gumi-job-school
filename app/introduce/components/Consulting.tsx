@@ -11,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Map } from "./Map";
 import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
 import { useActionState } from "react";
 import { SendMailAction } from "@/app/actions";
