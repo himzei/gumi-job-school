@@ -15,6 +15,8 @@ import { NoticeContact } from "./NoticeContact";
 import Image from "next/image";
 import MainSlide1 from "@/public/introduce/001.png";
 import MainSlide2 from "@/public/introduce/002.png";
+import MainSlide3 from "@/public/introduce/003.png";
+import MainSlide4 from "@/public/introduce/004.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -31,28 +33,25 @@ const testimonials = [
   {
     image: MainImg1,
     back: MainSlide2,
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendus ipsum .",
-    name: "Johnathan Rodriguez",
-    title: "This Week's New Comics",
+    description: "몸값배팅! 희망연봉, 얼마까지 상도의?",
+    name: "폼나게 이직하자",
+    title: "폼나게 이직하자",
     link: "https://www.google.com",
   },
   {
     image: MainImg1,
-    back: "https://images.unsplash.com/photo-1705607984977-9057bb5fa8e2?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate",
-    name: "Phil Heath",
-    title: "What if...? Season 2",
+    back: MainSlide3,
+    description: "몸값배팅! 희망연봉, 얼마까지 상도의?",
+    name: "폼나게 이직하자",
+    title: "폼나게 이직하자",
     link: "https://www.naver.com",
   },
   {
     image: MainImg1,
-    back: "https://images.unsplash.com/photo-1682687221073-53ad74c2cad7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum .",
-    name: "Andrea Beck",
-    title: "Echo Comics To Read",
+    back: MainSlide4,
+    description: "전화상담, 카카오상담, 메일상담 OKOKOK",
+    name: "상담신청하기",
+    title: "상담신청하기",
     link: "https://www.kakao.com",
   },
   {
@@ -150,13 +149,13 @@ const Card = ({
             className="w-full h-full object-cover object-center "
           />
           <div className="absolute px-4 left-[50%] -translate-x-[50%] max-w-7xl w-full h-full flex flex-col justify-center space-y-4">
-            {/* <div className="h-28">
-              <img
+            <div className="h-28">
+              {/* <img
                 src={image}
                 alt="main_logo"
                 className="h-full object-cover"
-              />
-            </div> */}
+              /> */}
+            </div>
             <h1 className="text-white text-4xl font-bold uppercase ">{name}</h1>
             <p className="text-xl w-2/3 md:w-1/2 text-white">{description}</p>
             <div className="py-4 flex space-x-4">
