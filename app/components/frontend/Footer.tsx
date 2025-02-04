@@ -25,8 +25,8 @@ export function Footer() {
       </div>
       <div className="flex text-xs py-4 flex-col gap-2">
         <p>
-          한국직업능력개발학원 경북 구미시 1공단로7길 86-9 / 대표자:조현국 /
-          사업자번호:513-91-12183 / 학원 번호:제 1595호
+          한국직업교육학원 경북 구미시 구미중앙로27길 15, 2~3층(원평동) /
+          대표자:조현국 / 사업자번호:310-94-05594
         </p>
         <p>
           대표 E-mail:admin@gmail.com / 개인정보보호책임자:조현국
@@ -35,7 +35,7 @@ export function Footer() {
       </div>
       <div>
         <span className="text-xs">
-          Copyright © 2025 한국직업능력개발학원 All Rights Reserved.
+          Copyright © 2025 한국직업교육학원 All Rights Reserved.
         </span>
       </div>
     </div>

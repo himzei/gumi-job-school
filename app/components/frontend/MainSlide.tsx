@@ -12,21 +12,25 @@ import MainImg1 from "@/public/logo_s.png";
 
 import ButtonCustom from "./ButtonCustom";
 import { NoticeContact } from "./NoticeContact";
+import Image from "next/image";
+import MainSlide1 from "@/public/introduce/001.png";
+import MainSlide2 from "@/public/introduce/002.png";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const testimonials = [
   {
     image: MainImg1,
-    back: "https://images.unsplash.com/photo-1682687220208-22d7a2543e88?q=80&w=2150&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendus ipsum .",
-    name: "Echo comics to Read",
+    back: MainSlide1,
+    description: "빅데이터 분석 기반의 멀티 전문인력 양성과정(컴활+FAT+TAT)",
+    name: "산업구조변화 대응 특화훈련",
     title: "Echo Now Streaming",
     link: "https://www.daum.net",
-    link2: "https://msn.com",
+    // link2: "https://msn.com",
   },
   {
     image: MainImg1,
-    back: "https://plus.unsplash.com/premium_photo-1663950995404-e18773895f8c?q=80&w=2150&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    back: MainSlide2,
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendus ipsum .",
     name: "Johnathan Rodriguez",
@@ -138,23 +142,29 @@ const Card = ({
         className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 flex flex-col items-center justify-center"
       >
         <div className="absolute top-0 left-0 w-full h-full flex justify-center">
-          <img
+          <Image
             src={back}
+            width={1920}
+            height={500}
             alt="lima"
             className="w-full h-full object-cover object-center "
           />
           <div className="absolute px-4 left-[50%] -translate-x-[50%] max-w-7xl w-full h-full flex flex-col justify-center space-y-4">
-            <div className="h-28">
+            {/* <div className="h-28">
               <img
                 src={image}
                 alt="main_logo"
                 className="h-full object-cover"
               />
-            </div>
+            </div> */}
             <h1 className="text-white text-4xl font-bold uppercase ">{name}</h1>
             <p className="text-xl w-2/3 md:w-1/2 text-white">{description}</p>
             <div className="py-4 flex space-x-4">
-              {link && <ButtonCustom type="read more" link={link} />}
+              {link && (
+                <Link href={link}>
+                  <Button variant="outline">자세히보기</Button>
+                </Link>
+              )}
               {link2 && <ButtonCustom type="unlock now" link={link2} />}
             </div>
           </div>
