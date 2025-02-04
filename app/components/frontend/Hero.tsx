@@ -108,7 +108,7 @@ const MENUS = [
   },
   {
     text: "국비지원과정",
-    href: "/comics",
+    href: "/courses",
     // component: ComicsComponent,
   },
   {
