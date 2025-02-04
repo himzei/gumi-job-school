@@ -66,7 +66,7 @@ export default function Features() {
             {itemLists1.map((item, i) => (
               <div
                 key={i}
-                className="bg-white w-[340px] aspect-square py-10 border border-gray-200 shadow-xl flex flex-col justify-between space-y-8 rounded-lg"
+                className="bg-white w-[340px] aspect-square py-10 border border-gray-200 shadow-xl flex flex-col justify-between space-y-8 rounded-lg group hover:shadow-none hover:-translate-x-1 hover:-translate-y-1 duration-500"
               >
                 {/* title */}
                 <div className="flex px-8 justify-between items-center text-xl">
@@ -75,12 +75,14 @@ export default function Features() {
                 </div>
                 {/* contents */}
                 <div className="flex flex-col px-8 space-y-3">
-                  <h2 className="text-2xl font-bold">{item.title}</h2>
+                  <h2 className="text-2xl tracking-tight font-bold group-hover:text-primary transition duration-500">
+                    {item.title}
+                  </h2>
                   <p className="text-gray-700">{item.description}</p>
                 </div>
                 {/* image */}
                 <div className="w-full h-20 relative pl-4">
-                  <div className="w-full h-20  translate-x-4 overflow-hidden">
+                  <div className="w-full h-20  translate-x-4 overflow-hidden transition duration-500 group-hover:-translate-x-1.5">
                     <img
                       className="object-cover object-center w-full h-full"
                       src={item.imgUrl}
@@ -90,7 +92,7 @@ export default function Features() {
                 </div>
               </div>
             ))}
-            <div className="absolute  top-0 right-0   ">
+            <div className="absolute  top-0 right-0">
               <TitleSection
                 section="feature"
                 mainTitle="훈련생을 위한 한국직업교육학원!"
@@ -104,7 +106,7 @@ export default function Features() {
             {itemLists2.map((item, i) => (
               <div
                 key={i}
-                className="w-[320px] aspect-square py-8 border border-gray-200 shadow-xl flex flex-col justify-between space-y-4 rounded-lg bg-white"
+                className="w-[320px] aspect-square py-8 border border-gray-200 shadow-xl flex flex-col justify-between space-y-4 rounded-lg bg-white group hover:shadow-none hover:-translate-x-1 hover:-translate-y-1 duration-500"
               >
                 {/* title */}
                 <div className="flex px-8 justify-between items-center text-xl">
@@ -113,12 +115,14 @@ export default function Features() {
                 </div>
                 {/* contents */}
                 <div className="flex flex-col px-8 space-y-2">
-                  <h2 className="text-2xl font-bold">{item.title}</h2>
+                  <h2 className="text-2xl tracking-tight font-bold group-hover:text-primary transition duration-500">
+                    {item.title}
+                  </h2>
                   <p className="text-muted-foreground">{item.description}</p>
                 </div>
                 {/* image */}
                 <div className="w-full h-20 relative pl-4">
-                  <div className="w-full h-20 translate-x-4 overflow-hidden">
+                  <div className="w-full h-20 translate-x-4 overflow-hidden transition duration-500 group-hover:-translate-x-1.5">
                     <Image
                       className="object-cover object-center w-full h-full"
                       src={item.imgUrl}

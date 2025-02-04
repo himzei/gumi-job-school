@@ -166,19 +166,16 @@ export default function Consulting() {
           </Button>
         </DialogFooter>
       </Dialog> */}
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 max-w-7xl w-full mx-auto gap-8">
-        <div className="w-full h-full bg-white rounded-lg overflow-hidden">
-          <Map />
-        </div>
+      <div className="flex justify-center max-w-xl w-full mx-auto gap-8">
         {/* 본문 */}
-        <div className="w-full mx-auto py-16 bg-white px-4 rounded-lg shadow-lg">
+        <div className="w-full mx-auto py-16 bg-white px-8 rounded-lg shadow-lg">
           <div className="flex flex-col space-y-12">
             <div className="space-y-4">
               <TitleSection
                 section="consulting"
-                mainTitle="호주 일경험 프로그램 A to Z"
-                subTitle="대구한의대학교 평생교육원에"
-                subTitle2="문의주세요"
+                mainTitle="한국직업교육학원 상담신청"
+                subTitle="맞춤형 교육상담을 신청하세요!"
+                // subTitle2="문의주세요"
               />
               <div className="flex flex-col">
                 <h2 className="font-semibold text-gray-500">교육문의전화</h2>

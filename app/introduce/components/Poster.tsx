@@ -1,15 +1,16 @@
+import Image from "next/image";
 import { outlineContents } from "./outlineContents";
 import TitleSection from "./TitleSection";
+import HistoryImg from "@/public/introduce/history.png";
 
 export function Poster() {
   return (
-    <div className="w-full flex flex-col space-y-16 py-16 max-w-7xl mx-auto">
+    <div className="w-full flex flex-col space-y-16 py-16 max-w-7xl mx-auto px-4">
       {/* title */}
       <TitleSection
-        section="outline"
-        mainTitle="대구한의대 학생들의 취업성공을"
-        subTitle="이끌어내기 위해 노력합니다"
-        size="lg"
+        section="history"
+        mainTitle="한국직업교육학원 연혁"
+        subTitle="성장과 발전의 발자취를 담다"
       />
       {/* 본문 */}
       <div className="grid sm:grid-cols-1 space-y-8 md:grid-cols-2">
@@ -35,10 +36,12 @@ export function Poster() {
         </div>
         {/* 2 */}
         <div>
-          <img
-            src="https://images.unsplash.com/photo-1526512340740-9217d0159da9?q=80&w=2500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          <Image
+            width={500}
+            height={700}
+            src={HistoryImg}
             alt="poster-img"
-            className="w-[500px] h-[600px]"
+            className="object-cover"
           />
         </div>
       </div>
