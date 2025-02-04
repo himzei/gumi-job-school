@@ -17,6 +17,7 @@ import MainSlide1 from "@/public/introduce/001.png";
 import MainSlide2 from "@/public/introduce/002.png";
 import MainSlide3 from "@/public/introduce/003.png";
 import MainSlide4 from "@/public/introduce/004.png";
+import MainSlide5 from "@/public/introduce/005.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -49,18 +50,18 @@ const testimonials = [
   {
     image: MainImg1,
     back: MainSlide4,
-    description: "전화상담, 카카오상담, 메일상담 OKOKOK",
-    name: "상담신청하기",
+    // description: "전화상담, 카카오상담, 메일상담 OKOKOK",
+    // name: "상담신청하기",
     title: "상담신청하기",
     link: "https://www.kakao.com",
   },
   {
     image: MainImg1,
-    back: "https://plus.unsplash.com/premium_photo-1664382465641-997aa3b73907?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    description:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendusda.",
-    name: "Daniel Henderson",
-    title: "Marvel's Blade' in Development",
+    back: MainSlide5,
+    // description:
+    //   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendusda.",
+    // name: "생생합격후기",
+    title: "생생합격후기",
     link: "https://www.marvel.com",
   },
 ];
