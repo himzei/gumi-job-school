@@ -11,6 +11,7 @@ import { Check } from "lucide-react";
 import { SubmitButton } from "../SubmitButton";
 import Link from "next/link";
 import { CreateSubscription } from "@/app/actions";
+import { TitleRotate } from "../../frontend/TitleRotate";
 
 interface iAppProps {
   id: number;
@@ -50,18 +51,6 @@ export const PricingPlans: iAppProps[] = [
 export function PricingTable() {
   return (
     <>
-      <div className="max-w-3xl mx-auto text-center">
-        <p className="font-semibold text-primary">국비지원</p>
-        <h1 className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
-          국비지원과정
-        </h1>
-      </div>
-
-      <p className="mx-auto mt-6 max-w-2xl text-center leading-tight text-balance">
-        미래를 준비하는 맞춤 교육! 현재 모집 중인 다양한 과정과 커리큘럼을
-        확인하고 새로운 가능성에 도전하세요
-      </p>
-
       <div className="relative grid gird-cols-1 gap-8 mt-16 lg:grid-cols-3">
         {PricingPlans.map((item) => (
           <Card

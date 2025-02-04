@@ -132,10 +132,10 @@ export function Hero() {
         value={{ menuOpen, setMenuOpen, setMenuContent }}
       >
         <div className="sticky top-0  transition-all duration-700">
-          <div className="max-w-7xl mx-auto w-full h-16 flex justify-center z-10 ">
-            <div className="relative w-full h-full flex justify-between items-center  text-xs">
-              {/* login */}
-              <div className="hidden md:flex uppercase h-full px-4  items-center space-x-2">
+          <div className="max-w-7xl mx-auto w-full h-24 flex justify-center z-10 ">
+            <div className="relative w-full h-full flex justify-between items-center text-xs">
+              {/* 1. 로그인 회원가입 */}
+              <div className="hidden md:flex uppercase h-full px-4 items-center space-x-2">
                 <Image src={Logo} alt="logo small" width={30} height={30} />
                 <LoginLink>
                   <span>login</span>
@@ -145,9 +145,10 @@ export function Hero() {
                   <span>Join</span>
                 </RegisterLink>
               </div>
-              <div>
+              {/* 2. 로고 */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <Link href="/">
-                  <h1 className="text-2xl font-bold tracking-tighter">
+                  <h1 className="text-4xl font-bold tracking-tighter">
                     한국<span className="text-primary">직업</span>교육학원
                   </h1>
                 </Link>
@@ -156,6 +157,7 @@ export function Hero() {
               <div className="block md:hidden px-4 cursor-pointer text-2xl">
                 <IoMenuSharp />
               </div>
+              {/* 3. 테마토글 */}
               <div className="px-4 h-full flex md:space-x-4 items-center z-10">
                 <ThemeToggle />
                 <div className="text-lg">

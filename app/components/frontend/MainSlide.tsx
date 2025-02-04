@@ -208,10 +208,10 @@ export default function MainSlide() {
             />
           </div>
           {/* 아이콘 */}
-          <div className="flex w-full h-full items-center justify-end space-x-4 text-2xl text-gray-500">
-            <FaFacebookSquare />
-            <FaInstagramSquare />
-            <FaPinterest />
+          <div className="flex w-full h-10 items-center justify-end space-x-4 text-2xl text-gray-500">
+            {/* <FaFacebookSquare /> */}
+            {/* <FaInstagramSquare /> */}
+            {/* <FaPinterest /> */}{" "}
           </div>
         </div>
       </div>

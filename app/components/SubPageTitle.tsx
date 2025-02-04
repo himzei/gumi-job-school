@@ -1,11 +1,13 @@
 import Image, { StaticImageData } from "next/image";
 import { TitleRotate } from "./frontend/TitleRotate";
+import { cn } from "@/lib/utils";
 
 interface iAppProps {
   subTitle: string;
   mainTitle: string;
   description: string;
   backImg: StaticImageData;
+  className?: string;
 }
 
 export function SubPageTitle({
@@ -13,10 +15,16 @@ export function SubPageTitle({
   mainTitle,
   description,
   backImg,
+  className,
 }: iAppProps) {
   return (
     <>
-      <div className="relative w-full h-[500px] flex justify-end border-t border-b border-gray-700">
+      <div
+        className={cn(
+          "relative w-full h-[500px] flex justify-end border-t border-b border-gray-700 ",
+          className
+        )}
+      >
         <div
           className="w-[55%] h-full"
           style={{
@@ -30,11 +38,13 @@ export function SubPageTitle({
             alt="title-img"
           />
         </div>
-        <div className="absolute left-[50%] -translate-x-[50%] px-4 max-w-7xl w-full h-full flex flex-col justify-center space-y-8">
-          <div>
-            <TitleRotate text={subTitle} color="dark" />
-            <h2 className="text-4xl font-bold uppercase py-2">{mainTitle}</h2>
-            <p className="">{description}</p>
+        <div className="absolute w-full h-full max-w-7xl left-[50%] transform -translate-x-[50%]">
+          <div className="w-full h-full">
+            <TitleRotate
+              text={subTitle}
+              mainTitle={mainTitle}
+              description={description}
+            />
           </div>
         </div>
       </div>
