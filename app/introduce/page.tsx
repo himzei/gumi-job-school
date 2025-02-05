@@ -4,6 +4,7 @@ import { Poster } from "./components/Poster";
 import SubImg01 from "@/public/sub/sub001.png";
 import { SubPageTitle } from "../components/SubPageTitle";
 import Maps from "./components/Maps";
+import TitleSection from "./components/TitleSection";
 
 export default function IntroducePage() {
   return (
@@ -30,8 +31,16 @@ export default function IntroducePage() {
           <Consulting />
         </div>
       </div>
-      <div>
+      <div className="relative">
         <Maps />
+        <div className="absolute px-8 py-4 bg-white/80 top-8 z-10 left-[10%]">
+          <TitleSection
+            section="contact"
+            mainTitle="구미시 구미중앙로27길 15"
+            subTitle="한국직업교육학원"
+            // subTitle2="문의주세요"
+          />
+        </div>
       </div>
     </>
   );
