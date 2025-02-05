@@ -1,6 +1,5 @@
 import { Hero } from "../components/frontend/Hero";
 import { Footer } from "../components/frontend/Footer";
-
 export default function layoutIntroduce({
   children,
 }: {

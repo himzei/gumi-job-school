@@ -125,6 +125,10 @@ const MENUS = [
     text: "커뮤니티",
     href: "/community",
   },
+  {
+    text: "블로그",
+    href: "/blogs",
+  },
 ];
 
 export function Hero() {

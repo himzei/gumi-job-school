@@ -24,21 +24,21 @@ export const metadata: Metadata = {
       "경북 구미 훈련생을 위한 최고의 교육 기회! 교육과 취업을 동시에 잡으세요!",
     url: "https://gumi-job-school.vercel.app", // 실제 URL로 변경
     siteName: "한국직업교육학원",
-    images: [
-      {
-        url: "@/public/logo_s.png", // 이미지 경로
-        width: 1200,
-        height: 630,
-        alt: "한국직업교육학원",
-      },
-    ],
+    // images: [
+    //   {
+    //     url: "@/public/logo_s.png", // 이미지 경로
+    //     width: 1200,
+    //     height: 630,
+    //     alt: "한국직업교육학원",
+    //   },
+    // ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "한국직업교육학원",
     description: "교육과 취업을 동시에 잡으세요!",
-    images: ["@/public/logo_s.png"],
+    // images: ["@/public/logo_s.png"],
   },
 };
 
