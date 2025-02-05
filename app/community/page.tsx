@@ -10,6 +10,7 @@ export default function CommunityPage() {
         description="정부 지원으로 취업 역량 강화를 위한 맞춤 교육 과정"
         backImg={SubImg05}
       />
+      <div className="min-h-screen"></div>
     </>
   );
 }
