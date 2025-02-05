@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "한국직업교육학원",
     description: "교육과 취업을 동시에 잡으세요!",
-    images: ["/images/og-image.jpg"],
+    images: ["@/public/logo_s.png"],
   },
 };
 
