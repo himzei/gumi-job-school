@@ -102,6 +102,11 @@ const MobileMenu = () => {
 
 const MENUS = [
   {
+    text: "HOME",
+    href: "/",
+    // component: NewsComponent,
+  },
+  {
     text: "기관소개",
     href: "/introduce",
     // component: NewsComponent,

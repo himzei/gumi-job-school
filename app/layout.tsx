@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "한국직업교육학원",
+  title: "한국직업교육학원 - 구미 회계,세무,컴퓨터 학원",
   description:
     "경북 구미 훈련생을 위한 한국직업교육학원! 교육과 취업을 동시에 잡으세요!!",
   openGraph: {
