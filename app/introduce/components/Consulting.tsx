@@ -19,8 +19,13 @@ import { parseWithZod } from "@conform-to/zod";
 import { EmailSchema } from "@/app/utils/zodSchemas";
 import { toast } from "sonner";
 
+const initialState = {
+  success: false,
+  message: "",
+};
+
 export default function Consulting() {
-  const [lastResult, action] = useActionState(SendMailAction, undefined);
+  const [lastResult, action] = useActionState(SendMailAction, initialState);
 
   const [form, fields] = useForm({
     lastResult,

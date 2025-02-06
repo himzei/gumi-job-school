@@ -10,10 +10,7 @@ import {
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
-import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import Mail from "nodemailer/lib/mailer";
-import { toast } from "sonner";
 
 export async function CreateSiteAction(prevState: any, formData: FormData) {
   const user = await requireUser();
@@ -243,9 +240,38 @@ export async function SendMailAction(prevState: any, formData: FormData) {
       html: `<p>${message}</p>`,
     });
     console.log("이메일 전송 성공");
-    return { success: true, message: "메일 전송 성공" };
+    return {
+      success: true,
+      message: "메일 전송 성공",
+    };
   } catch (error) {
     console.log(error);
-    return { success: false, message: "메일 전송 실패" };
+    return {
+      success: false,
+      message: "메일 전송 실패",
+    };
   }
+}
+
+export async function updateUsername(prevState: any, formData: FormData) {
+  const user = await requireUser();
+
+  if (!user) {
+    return redirect("/api/auth/login");
+  }
+
+  const firstName = formData.get("firstName") as string;
+
+  await prisma.user.update({
+    where: {
+      id: user.id,
+    },
+    data: {
+      firstName: firstName,
+    },
+  });
+
+  return {
+    message: "successfull ",
+  };
 }
