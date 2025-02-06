@@ -81,7 +81,7 @@ const MobileMenu = () => {
             <div className="text-white px-4 py-4 flex flex-col">
               {/* 1 */}
               <div className="py-8 px-2 text-yellow-600 border-t border-neutral-500">
-                <h4>MARVEL INSIDER</h4>
+                <h4>구미회계·컴퓨터</h4>
                 <div className="w-full flex justify-between py-4">
                   <h3 className="text-white text-lg">KEN</h3>
 

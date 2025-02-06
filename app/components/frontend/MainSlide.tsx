@@ -9,8 +9,6 @@ import {
 } from "react-icons/fa";
 
 import MainImg1 from "@/public/logo_s.png";
-
-import ButtonCustom from "./ButtonCustom";
 import { NoticeContact } from "./NoticeContact";
 import Image from "next/image";
 import MainSlide1 from "@/public/introduce/001.png";
@@ -18,8 +16,6 @@ import MainSlide2 from "@/public/introduce/002.png";
 import MainSlide3 from "@/public/introduce/003.png";
 import MainSlide4 from "@/public/introduce/004.png";
 import MainSlide5 from "@/public/introduce/005.png";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 const testimonials = [
   {
@@ -27,7 +23,7 @@ const testimonials = [
     back: MainSlide1,
     description: "빅데이터 분석 기반의 멀티 전문인력 양성과정(컴활+FAT+TAT)",
     name: "산업구조변화 대응 특화훈련",
-    title: "컴활+FAT+TAT과정",
+    title: "한국직업교육학원을\n 소개합니다",
     link: "https://www.daum.net",
     // link2: "https://msn.com",
   },
@@ -36,7 +32,7 @@ const testimonials = [
     back: MainSlide2,
     description: "몸값배팅! 희망연봉, 얼마까지 상도의?",
     name: "폼나게 이직하자",
-    title: "폼나게 이직하자",
+    title: "수강생들의 생생한 인터뷰와 성장이야기",
     link: "https://www.google.com",
   },
   {
@@ -44,7 +40,7 @@ const testimonials = [
     back: MainSlide3,
     description: "몸값배팅! 희망연봉, 얼마까지 상도의?",
     name: "폼나게 이직하자",
-    title: "폼나게 이직하자",
+    title: "예비수강생들을 위한 특별한 맞춤상담",
     link: "https://www.naver.com",
   },
   {
@@ -52,7 +48,7 @@ const testimonials = [
     back: MainSlide4,
     // description: "전화상담, 카카오상담, 메일상담 OKOKOK",
     // name: "상담신청하기",
-    title: "상담신청하기",
+    title: "유익한 교육 정보와 소식을 확인하세요",
     link: "https://www.kakao.com",
   },
   {
@@ -61,7 +57,7 @@ const testimonials = [
     // description:
     //   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendusda.",
     // name: "생생합격후기",
-    title: "생생합격후기",
+    title: "SNS 해시테그 이벤트에 참여하세요",
     link: "https://www.marvel.com",
   },
 ];
@@ -157,7 +153,7 @@ const Card = ({
                 className="h-full object-cover"
               /> */}
             </div>
-            <h1 className="text-white text-4xl font-bold uppercase ">{name}</h1>
+            {/* <h1 className="text-white text-4xl font-bold uppercase ">{name}</h1>
             <p className="text-xl w-2/3 md:w-1/2 text-white">{description}</p>
             <div className="py-4 flex space-x-4">
               {link && (
@@ -166,7 +162,7 @@ const Card = ({
                 </Link>
               )}
               {link2 && <ButtonCustom type="unlock now" link={link2} />}
-            </div>
+            </div> */}
           </div>
         </div>
       </motion.div>
