@@ -10,6 +10,10 @@ import {
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
+import Mail from "nodemailer/lib/mailer";
+import { toast } from "sonner";
 
 export async function CreateSiteAction(prevState: any, formData: FormData) {
   const user = await requireUser();
@@ -207,6 +211,11 @@ export async function CreateSubscription() {
 }
 
 export async function SendMailAction(prevState: any, formData: FormData) {
+  const name = formData.get("name") as string;
+  const email = formData.get("email") as string;
+  const phone = formData.get("phone") as string;
+  const message = formData.get("message") as string;
+
   const submission = parseWithZod(formData, {
     schema: EmailSchema,
   });
@@ -215,17 +224,28 @@ export async function SendMailAction(prevState: any, formData: FormData) {
     return submission.reply();
   }
 
-  const apiEndpoint = `/api/email`;
-
-  return await fetch(apiEndpoint, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const transport = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    service: "gmail",
+    auth: {
+      user: process.env.MY_EMAIL,
+      pass: process.env.MY_PASSWORD,
     },
-    body: JSON.stringify({
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      phone: formData.get("phone") as string,
-    }),
-  }).then((res) => res.json());
+  });
+
+  try {
+    await transport.sendMail({
+      from: process.env.MY_EMAIL,
+      to: process.env.MY_EMAIL,
+      subject: `[한국직업교육학원 상담신청서] ${name} (${email})`,
+      html: `<p>${message}</p>`,
+    });
+    console.log("이메일 전송 성공");
+    return { success: true, message: "메일 전송 성공" };
+  } catch (error) {
+    console.log(error);
+    return { success: false, message: "메일 전송 실패" };
+  }
 }

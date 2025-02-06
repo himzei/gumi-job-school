@@ -19,6 +19,7 @@ export const EmailSchema = z.object({
   name: z.string().min(1).max(10),
   email: z.string().min(1).max(40),
   phone: z.string().min(1).max(12),
+  message: z.string().min(10),
 });
 
 export function SiteCreationSchema(options?: {

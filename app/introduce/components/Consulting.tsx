@@ -12,14 +12,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SubmitButton } from "@/app/components/dashboard/SubmitButton";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { SendMailAction } from "@/app/actions";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { EmailSchema } from "@/app/utils/zodSchemas";
+import { toast } from "sonner";
 
 export default function Consulting() {
   const [lastResult, action] = useActionState(SendMailAction, undefined);
+
   const [form, fields] = useForm({
     lastResult,
     onValidate({ formData }) {
@@ -31,6 +33,13 @@ export default function Consulting() {
     shouldValidate: "onBlur",
     shouldRevalidate: "onInput",
   });
+
+  console.log(lastResult, "asasasas");
+  useEffect(() => {
+    if (lastResult?.success === true) {
+      toast.success("메세지가 성공적으로 전송되었습니다.");
+    }
+  }, [lastResult]);
   return (
     <>
       {/* 다이얼로그 */}
@@ -223,8 +232,17 @@ export default function Consulting() {
                   </SelectContent>
                 </Select>
 
-                <Textarea placeholder="궁금한 사항을 입력해주세요" />
-
+                <div className="grid gap-2">
+                  <Textarea
+                    placeholder="궁금한 사항을 입력해주세요"
+                    name={fields.message.name}
+                    key={fields.message.key}
+                    defaultValue={fields.message.initialValue}
+                  />
+                  <p className="text-red-500 text-sm">
+                    {fields.message.errors}
+                  </p>
+                </div>
                 <div className="flex w-full h-full items-center justify-between border border-gray-200 px-2 py-2">
                   <div className="flex items-center space-x-2 cursor-pointer">
                     <div className="w-5 h-5 border border-gray-400"></div>
@@ -236,7 +254,6 @@ export default function Consulting() {
                     <Button>내용보기</Button>
                   </div>
                 </div>
-
                 <SubmitButton
                   className="w-full"
                   variant="default"
