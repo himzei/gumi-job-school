@@ -6,18 +6,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 
 const initialState = {
   message: "",
 };
 
 export function SettingsForm({
-  username,
+  firstName,
 }: {
-  username: string | null | undefined;
+  firstName: string | null | undefined;
 }) {
-  const [state, formAction] = useFormState(updateUsername, initialState);
+  const [state, formAction] = useActionState(updateUsername, initialState);
   return (
     <form action={formAction}>
       <h1 className="text-3xl font-extrabold tracking-tight">Settings</h1>
@@ -27,8 +27,8 @@ export function SettingsForm({
         In this settings page you cna change
       </p>
       <Input
-        defaultValue={username ?? undefined}
-        name="username"
+        defaultValue={firstName ?? undefined}
+        name="firstName"
         required
         className="mt-2"
         min={2}

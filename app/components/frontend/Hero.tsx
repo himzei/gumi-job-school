@@ -1,21 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/logo_s.png";
-import { ThemeToggle } from "../dashboard/ThemeToggle";
-import {
-  LoginLink,
-  RegisterLink,
-} from "@kinde-oss/kinde-auth-nextjs/components";
 import { FaSearch } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { IoMenuSharp } from "react-icons/io5";
 import { FiMenu, FiX } from "react-icons/fi";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MenuOpenContext } from "./MenuOpenContext";
 import NavLink from "./NavLink";
+import { Navbar } from "../Navbar";
 
 const MobileMenuLink = ({ menu }: any) => {
   return (
@@ -35,7 +28,7 @@ const MobileMenuLink = ({ menu }: any) => {
   );
 };
 
-const MobileMenu = () => {
+export const MobileMenu = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <div className="block md:hidden z-30">
@@ -135,6 +128,7 @@ export function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuContent, setMenuContent] = useState();
   const showFlyout = menuContent && menuOpen;
+
   return (
     <>
       <MenuOpenContext.Provider
@@ -142,51 +136,8 @@ export function Hero() {
       >
         <div className="sticky top-0  transition-all duration-700">
           <div className="max-w-7xl mx-auto w-full h-24 flex justify-center z-10 ">
-            <div className="relative w-full h-full flex justify-between items-center text-xs">
-              {/* 1. 로그인 회원가입 */}
-              <div className="hidden md:flex uppercase h-full px-4 items-center space-x-2">
-                <Image
-                  src={Logo}
-                  alt="logo small"
-                  width={20}
-                  height={20}
-                  className="translate-x-1 grayscale"
-                />
-                <LoginLink>
-                  <span>login</span>
-                </LoginLink>
-                <span className="-translate-y-[1px]">|</span>
-                <RegisterLink>
-                  <span>Join</span>
-                </RegisterLink>
-              </div>
-              {/* 2. 로고 */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <Link href="/" className="flex items-center space-x-2">
-                  <Image src={Logo} alt="logo" width={60} height={60} />
-                  <h1 className="text-4xl font-bold tracking-tighter">
-                    한국<span className="text-primary">직업</span>교육학원
-                  </h1>
-                </Link>
-              </div>
-              <MobileMenu />
-              <div className="block md:hidden px-4 cursor-pointer text-2xl">
-                <IoMenuSharp />
-              </div>
-              {/* 3. 테마토글 */}
-              <div className="px-4 h-full flex md:space-x-4 items-center z-10">
-                <ThemeToggle />
-                <div className="text-lg">
-                  <FaSearch />
-                </div>
-              </div>
-
-              <div className="absolute top-0 left-[50%] -translate-x-[50%] h-12 ">
-                <Link href="/">
-                  <div className="h-full"></div>
-                </Link>
-              </div>
-            </div>
+            {/* Navbar */}
+            <Navbar />
           </div>
 
           <div className="w-full bg-muted h-10 border-t -z-10 border-slate-300 hidden md:flex justify-center uppercase items-center space-x-8">

@@ -20,6 +20,7 @@ export async function GET() {
     dbUser = await prisma.user.create({
       data: {
         id: user.id,
+        username: user.email?.split("@")[0] ?? "",
         firstName: user.given_name ?? "",
         lastName: user.family_name ?? "",
         email: user.email ?? "",

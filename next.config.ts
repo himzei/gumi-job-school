@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
         hostname: "plus.unsplash.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "avatar.vercel.sh",
+        port: "",
+      },
     ],
   },
 };

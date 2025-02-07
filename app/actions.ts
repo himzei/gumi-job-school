@@ -11,6 +11,7 @@ import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
 import nodemailer from "nodemailer";
+import { Prisma } from "@prisma/client";
 
 export async function CreateSiteAction(prevState: any, formData: FormData) {
   const user = await requireUser();
@@ -241,14 +242,14 @@ export async function SendMailAction(prevState: any, formData: FormData) {
     });
     console.log("이메일 전송 성공");
     return {
-      success: true,
-      message: "메일 전송 성공",
+      status: "success",
+      message: "문의하기 전송이 완료되었습니다.",
     };
   } catch (error) {
     console.log(error);
     return {
-      success: false,
-      message: "메일 전송 실패",
+      status: "error",
+      message: "전송 도중 문제가 발생했습니다. 디시 시도해 주세요",
     };
   }
 }
@@ -274,4 +275,61 @@ export async function updateUsername(prevState: any, formData: FormData) {
   return {
     message: "successfull ",
   };
+}
+
+// r
+export async function createCommunity(prevState: any, formData: FormData) {
+  const user = await requireUser();
+
+  try {
+    const name = formData.get("name") as string;
+
+    const data = await prisma.subreddit.create({
+      data: {
+        name: name,
+        userId: user.id,
+      },
+    });
+
+    return redirect("/");
+  } catch (e) {
+    if (e instanceof Prisma.PrismaClientKnownRequestError) {
+      if (e.code === "P2002") {
+        return {
+          message: "이 커뮤니티 이름은 이미 사용하고 있습니다.",
+          status: "error",
+        };
+      }
+    }
+    throw e;
+  }
+}
+
+// r -> update
+export async function updateSubDescription(prevState: any, formData: FormData) {
+  const user = await requireUser();
+
+  const subName = formData.get("subName") as string;
+  const description = formData.get("description") as string;
+
+  try {
+    await prisma.subreddit.update({
+      where: {
+        name: subName,
+      },
+      data: {
+        description: description,
+      },
+    });
+
+    return {
+      status: "success",
+      message: "커뮤니티 설명이 업데이트 되었습니다. ",
+    };
+  } catch {
+    return {
+      status: "error",
+      message: "업데이트 도중 문제가 발생했습니다. 디시 시도해 주세요",
+    };
+  }
 }
