@@ -12,6 +12,7 @@ import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
 import nodemailer from "nodemailer";
 import { Prisma } from "@prisma/client";
+import { JSONContent } from "@tiptap/react";
 
 export async function CreateSiteAction(prevState: any, formData: FormData) {
   const user = await requireUser();
@@ -334,19 +335,25 @@ export async function updateSubDescription(prevState: any, formData: FormData) {
   }
 }
 
-export async function createCommunityPost(formData: FormData) {
+export async function createCommunityPost(
+  { jsonContent }: { jsonContent: JSONContent },
+  formData: FormData
+) {
   const user = await requireUser();
 
   const title = formData.get("title") as string;
   const imageUrl = formData.get("imageUrl") as string;
+  const subName = formData.get("subName") as string;
 
   await prisma.postreddit.create({
     data: {
       title: title,
       imageString: imageUrl ?? undefined,
-      subName: "himzei",
+      subName: subName,
       userId: user.id,
-      textContent: "",
+      textContent: jsonContent ?? undefined,
     },
   });
+
+  return redirect("/");
 }

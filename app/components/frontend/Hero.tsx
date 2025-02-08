@@ -116,7 +116,7 @@ const MENUS = [
 
   {
     text: "커뮤니티",
-    href: "/community",
+    href: "/r",
   },
   {
     text: "블로그",

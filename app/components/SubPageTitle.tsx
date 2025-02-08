@@ -21,7 +21,7 @@ export function SubPageTitle({
     <>
       <div
         className={cn(
-          "relative w-full h-[500px] flex justify-end border-t border-b border-gray-700 ",
+          "relative w-full h-[300px] flex justify-end border-t border-b border-gray-700 ",
           className
         )}
       >

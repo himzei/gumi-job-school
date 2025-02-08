@@ -16,6 +16,7 @@ import { JSONContent } from "@tiptap/react";
 import { useParams } from "next/navigation";
 import { UploadDropzone } from "@/app/utils/Uploadthingcomponents";
 import { toast } from "sonner";
+import { createCommunityPost } from "@/app/actions";
 
 const rules = [
   {
@@ -52,8 +53,12 @@ interface iAppProps {
 export default function CreatePostRoute({ params }: iAppProps) {
   const { id } = useParams<{ id: string }>();
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [json, setJson] = useState<JSONContent | null>({});
-  // const [title, setTitle] = useState<string>();
+  const [json, setJson] = useState<JSONContent>({});
+  const [title, setTitle] = useState<string>("");
+
+  const createPostReddit = createCommunityPost.bind(null, {
+    jsonContent: json,
+  });
   return (
     <div className="max-w-7xl w-full my-16 mx-auto flex gap-x-10">
       {/* Left Side */}
@@ -77,13 +82,21 @@ export default function CreatePostRoute({ params }: iAppProps) {
           </TabsList>
           <TabsContent value="post">
             <Card>
-              <form action="">
+              <form action={createPostReddit}>
+                <input
+                  type="hidden"
+                  name="imageUrl"
+                  value={imageUrl ?? undefined}
+                />
+                <input type="hidden" name="subName" value={id} />
                 <CardHeader>
                   <Label>제목</Label>
                   <Input
                     required
                     name="title"
                     placeholder="제목을 작성해주세요"
+                    value={title ?? undefined}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                   <TipTapEditor setJson={setJson} json={json} />
                 </CardHeader>
@@ -96,16 +109,27 @@ export default function CreatePostRoute({ params }: iAppProps) {
           <TabsContent value="image">
             <Card>
               <CardHeader>
-                <UploadDropzone
-                  className="ut-button:bg-primary ut-button:ut-readying:bg-primary/50 ut-label:text-primary ut-button:ut-uploading:bg-primary/50 ut-button:ut-uploading:after:bg-primary"
-                  onClientUploadComplete={(res) => {
-                    toast.success("파일을 정상적으로 업로드 하였습니다.");
-                  }}
-                  endpoint="imageUploader"
-                  onUploadError={(error: Error) => {
-                    toast.error("업로드중 문제가 발생했습니다. ");
-                  }}
-                />
+                {imageUrl === "" ? (
+                  <UploadDropzone
+                    className="ut-button:bg-primary ut-button:ut-readying:bg-primary/50 ut-label:text-primary ut-button:ut-uploading:bg-primary/50 ut-button:ut-uploading:after:bg-primary"
+                    onClientUploadComplete={(res) => {
+                      toast.success("파일을 정상적으로 업로드 하였습니다.");
+                      setImageUrl(res[0].url);
+                    }}
+                    endpoint="imageUploader"
+                    onUploadError={(error: Error) => {
+                      toast.error("업로드중 문제가 발생했습니다. ");
+                    }}
+                  />
+                ) : (
+                  <Image
+                    src={imageUrl}
+                    alt="uploaded Image"
+                    width={600}
+                    height={400}
+                    className="object-contain h-80 rounded-lg w-full "
+                  />
+                )}
               </CardHeader>
             </Card>
           </TabsContent>
