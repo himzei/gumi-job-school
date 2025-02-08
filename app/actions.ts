@@ -11,8 +11,9 @@ import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
 import { stripe } from "./utils/stripe";
 import nodemailer from "nodemailer";
-import { Prisma } from "@prisma/client";
+import { Prisma, TypeOfVote } from "@prisma/client";
 import { JSONContent } from "@tiptap/react";
+import { revalidatePath } from "next/cache";
 
 export async function CreateSiteAction(prevState: any, formData: FormData) {
   const user = await requireUser();
@@ -362,7 +363,7 @@ export async function handleVote(formData: FormData) {
   const user = await requireUser();
 
   const postId = formData.get("postId") as string;
-  const voteDirection = formData.get("votdDirection") as string;
+  const voteDirection = formData.get("voteDirection") as TypeOfVote;
 
   const vote = await prisma.vote.findFirst({
     where: {
@@ -370,4 +371,37 @@ export async function handleVote(formData: FormData) {
       userId: user.id,
     },
   });
+
+  if (vote) {
+    if (vote.voteType === voteDirection) {
+      await prisma.vote.delete({
+        where: {
+          id: vote.id,
+        },
+      });
+
+      return revalidatePath("/r");
+    } else {
+      await prisma.vote.update({
+        where: {
+          id: vote.id,
+        },
+        data: {
+          voteType: voteDirection,
+        },
+      });
+
+      return revalidatePath("/r");
+    }
+  }
+
+  await prisma.vote.create({
+    data: {
+      voteType: voteDirection,
+      userId: user.id,
+      postredditId: postId,
+    },
+  });
+
+  return revalidatePath("/r");
 }

@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowDown, ArrowUp, MessageCircle } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { CopyLink } from "./CopyLink";
+import { handleVote } from "@/app/actions";
+import { DownVote, UpVote } from "../dashboard/SubmitButton";
+import { RenderToJson } from "./RenderToJson";
 
 interface iAppProps {
   title: string;
@@ -12,6 +14,7 @@ interface iAppProps {
   subName: string | undefined;
   userName: string;
   imageString: string | null;
+  voteCount: number;
 }
 
 export function PostCard({
@@ -21,20 +24,21 @@ export function PostCard({
   subName,
   userName,
   imageString,
+  voteCount,
 }: iAppProps) {
   return (
     <Card className="flex relative overflow-hidden">
       <div className="flex flex-col items-center gap-y-2 bg-muted p-2">
-        <form>
-          <Button size="sm" variant="outline">
-            <ArrowUp className="size-4" />
-          </Button>
+        <form action={handleVote}>
+          <input type="hidden" name="voteDirection" value="UP" />
+          <input type="hidden" name="postId" value={id} />
+          <UpVote />
         </form>
-        0
-        <form>
-          <Button variant="outline" size="sm">
-            <ArrowDown className="size-4" />
-          </Button>
+        {voteCount}
+        <form action={handleVote}>
+          <input type="hidden" name="voteDirection" value="DOWN" />
+          <input type="hidden" name="postId" value={id} />
+          <DownVote />
         </form>
       </div>
 
@@ -54,7 +58,7 @@ export function PostCard({
           </Link>
         </div>
         <div className="max-h-[400px] overflow-hidden">
-          {imageString && (
+          {imageString ? (
             <Image
               src={imageString}
               alt="Post Image"
@@ -62,8 +66,12 @@ export function PostCard({
               height={400}
               className="w-full h-full mt-2"
             />
+          ) : (
+            <div>aa</div>
+            // <RenderToJson data={jsonContent} />
           )}
         </div>
+
         <div className="m-3 flex items-center gap-x-5">
           <div className="flex items-center gap-x-1">
             <MessageCircle className="size-4 text-muted-foreground" />

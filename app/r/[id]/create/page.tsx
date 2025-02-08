@@ -95,7 +95,7 @@ export default function CreatePostRoute({ params }: iAppProps) {
                     required
                     name="title"
                     placeholder="제목을 작성해주세요"
-                    value={title ?? undefined}
+                    value={title ?? ""}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                   <TipTapEditor setJson={setJson} json={json} />
