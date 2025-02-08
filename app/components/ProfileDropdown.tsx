@@ -41,22 +41,22 @@ export function ProfileDropdown() {
         <DropdownMenuContent align="end" className="w-[200px]">
           <DropdownMenuItem>
             <Link className="w-full" href="/r/create">
-              Create Community
+              내 커뮤니티 생성
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link className="w-full" href="/create">
-              Create Post
+              커뮤니티 글 작성
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link className="w-full" href="/settings">
-              Settings
+              설정
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem>
-            <LogoutLink className="w-full">Logout</LogoutLink>
+            <LogoutLink className="w-full">로그아웃</LogoutLink>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

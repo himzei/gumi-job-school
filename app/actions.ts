@@ -333,3 +333,20 @@ export async function updateSubDescription(prevState: any, formData: FormData) {
     };
   }
 }
+
+export async function createCommunityPost(formData: FormData) {
+  const user = await requireUser();
+
+  const title = formData.get("title") as string;
+  const imageUrl = formData.get("imageUrl") as string;
+
+  await prisma.postreddit.create({
+    data: {
+      title: title,
+      imageString: imageUrl ?? undefined,
+      subName: "himzei",
+      userId: user.id,
+      textContent: "",
+    },
+  });
+}

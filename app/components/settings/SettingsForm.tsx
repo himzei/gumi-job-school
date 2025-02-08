@@ -20,11 +20,11 @@ export function SettingsForm({
   const [state, formAction] = useActionState(updateUsername, initialState);
   return (
     <form action={formAction}>
-      <h1 className="text-3xl font-extrabold tracking-tight">Settings</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight">설정</h1>
       <Separator className="my-4" />
       <Label className="text-lg">Username</Label>
       <p className="text-muted-foreground">
-        In this settings page you cna change
+        커뮤니티에서 활동할 사용자이름을 설정해 주세요
       </p>
       <Input
         defaultValue={firstName ?? undefined}
@@ -37,9 +37,9 @@ export function SettingsForm({
 
       <div className="w-full flex mt-5 gap-x-5 justify-end">
         <Button variant="secondary" asChild type="button">
-          <Link href="/">Cancel</Link>
+          <Link href="/">취소</Link>
         </Button>
-        <Button type="submit">Change Username</Button>
+        <Button type="submit">업데이트</Button>
       </div>
     </form>
   );
