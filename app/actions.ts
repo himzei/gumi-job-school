@@ -357,3 +357,17 @@ export async function createCommunityPost(
 
   return redirect("/");
 }
+
+export async function handleVote(formData: FormData) {
+  const user = await requireUser();
+
+  const postId = formData.get("postId") as string;
+  const voteDirection = formData.get("votdDirection") as string;
+
+  const vote = await prisma.vote.findFirst({
+    where: {
+      postredditId: postId,
+      userId: user.id,
+    },
+  });
+}

@@ -16,7 +16,7 @@ export default function layoutIntroduce({
       <SubPageTitle
         subTitle="community"
         mainTitle="커뮤니티"
-        description="정부 지원으로 취업 역량 강화를 위한 맞춤 교육 과정"
+        description="다양한 주제와 의견이 활발히 공유되는 공간! 당신의 소중한 이야기를 들려주세요"
         backImg={SubImg05}
       />
       {children}

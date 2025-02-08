@@ -34,10 +34,18 @@ export default async function RedditHome() {
   return (
     <div className="max-w-7xl mx-auto flex gap-x-10 my-16">
       {/* Left Side */}
-      <div className="w-[65%] flex flex-col gap-6-5">
+      <div className="w-[65%] flex flex-col gap-y-5">
         <CreatePostCard />
         {data.map((post) => (
-          <PostCard key={post.id} />
+          <PostCard
+            id={post.id}
+            imageString={post.imageString}
+            jsonContent={post.textContent}
+            subName={post.subName as string}
+            title={post.title}
+            userName={post.User?.username as string}
+            key={post.id}
+          />
         ))}
       </div>
       {/* Right Side */}
