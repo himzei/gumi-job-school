@@ -31,7 +31,7 @@ export const PricingPlans: iAppProps[] = [
       "교재비 무료",
     ],
     priceTitle: "본인부담금 없음",
-    href: "/courses/01",
+    href: "/courses/course01",
   },
   {
     id: 1,
@@ -44,7 +44,7 @@ export const PricingPlans: iAppProps[] = [
       "up to 1000 visitors",
     ],
     priceTitle: "200,000원",
-    href: "/courses/02",
+    href: "/courses/course02",
   },
   {
     id: 2,
@@ -57,7 +57,7 @@ export const PricingPlans: iAppProps[] = [
       "up to 1000 visitors",
     ],
     priceTitle: "200,000원",
-    href: "/courses/03",
+    href: "/courses/course03",
   },
 ];
 
