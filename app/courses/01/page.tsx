@@ -2,7 +2,7 @@ import TitleSection from "@/app/introduce/components/TitleSection";
 import Poster01 from "@/public/courses/001.jpg";
 import Image from "next/image";
 
-export default function Courses01() {
+export function Courses01() {
   return (
     <>
       <div className="max-w-3xl w-full mx-auto my-8">
