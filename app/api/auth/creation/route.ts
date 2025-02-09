@@ -30,5 +30,5 @@ export async function GET() {
     });
   }
 
-  return NextResponse.redirect("http://localhost:3000/settings");
+  return NextResponse.redirect(`${process.env.BASE_URL}/settings`);
 }

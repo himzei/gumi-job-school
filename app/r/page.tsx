@@ -47,17 +47,18 @@ async function getData(searchParams: string) {
   return { data, count };
 }
 
-export default function RedditHome({
+export default async function RedditHome({
   searchParams,
 }: {
   searchParams: Promise<{ page: string }>;
 }) {
+  const { page } = await searchParams;
   return (
     <div className="max-w-7xl mx-auto flex gap-x-10 my-16">
       {/* Left Side */}
       <div className="w-[65%] flex flex-col gap-y-5">
         <CreatePostCard />
-        <Suspense fallback={<SuspenseCard />}>
+        <Suspense fallback={<SuspenseCard key={page} />}>
           <ShowItems searchParams={searchParams} />
         </Suspense>
       </div>
