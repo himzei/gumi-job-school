@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { FileQuestion } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,6 +31,11 @@ async function getData(name: string, searchParams: string) {
           take: 10,
           skip: searchParams ? (Number(searchParams) - 1) * 10 : 0,
           select: {
+            Comment: {
+              select: {
+                id: true,
+              },
+            },
             title: true,
             imageString: true,
             id: true,
@@ -73,25 +79,37 @@ export default async function SubRedditRoute({
       <div className="w-[65%] flex flex-col gap-y-5">
         <CreatePostCard />
 
-        {data?.postreddits.map((post) => (
-          <PostCard
-            key={post.id}
-            id={post.id}
-            imageString={post.imageString}
-            subName={data.name}
-            title={post.title}
-            userName={post.User?.username as string}
-            jsonContent={post.textContent}
-            voteCount={post.Vote.reduce((acc, vote) => {
-              if (vote.voteType === "UP") return acc + 1;
-              if (vote.voteType === "DOWN") return acc - 1;
+        {data?.postreddits.length === 0 ? (
+          <div className="flex min-h-[400px] flex-col justify-center items-center rounded-md border border-dashed p-8 text-center">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
+              <FileQuestion className="size-10 text-primary" />
+            </div>
+            <h2 className="mt-6 text-xl font-semibold">게시글이 없어요</h2>
+          </div>
+        ) : (
+          <>
+            {data?.postreddits.map((post) => (
+              <PostCard
+                key={post.id}
+                id={post.id}
+                commentAmount={post.Comment.length}
+                imageString={post.imageString}
+                subName={data.name}
+                title={post.title}
+                userName={post.User?.username as string}
+                jsonContent={post.textContent}
+                voteCount={post.Vote.reduce((acc, vote) => {
+                  if (vote.voteType === "UP") return acc + 1;
+                  if (vote.voteType === "DOWN") return acc - 1;
 
-              return acc;
-            }, 0)}
-          />
-        ))}
+                  return acc;
+                }, 0)}
+              />
+            ))}
 
-        <Pagination totalPages={Math.ceil(count / 10)} />
+            <Pagination totalPages={Math.ceil(count / 10)} />
+          </>
+        )}
       </div>
       {/* Card Section  */}
       <div className="w-[35%]">

@@ -30,6 +30,7 @@ model User {
   createdSubreddits Subreddit[]
   postreddits       Postreddit[]
   Vote              Vote[]
+  Comment           Comment[]
 
   Subscription Subscription?
 }
@@ -101,7 +102,8 @@ model Postreddit {
   textContent Json?
   imageString String?
 
-  Vote Vote[]
+  Vote    Vote[]
+  Comment Comment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -126,4 +128,15 @@ model Vote {
   postredditId String?
 
   voteType TypeOfVote
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  text      String
+  createdAt DateTime @default(now())
+
+  User         User?       @relation(fields: [userId], references: [id])
+  userId       String?
+  Postreddit   Postreddit? @relation(fields: [postredditId], references: [id])
+  postredditId String?
 }

@@ -293,7 +293,7 @@ export async function createCommunity(prevState: any, formData: FormData) {
       },
     });
 
-    return redirect("/");
+    return redirect(`r/${data.name}`);
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
       if (e.code === "P2002") {
@@ -346,7 +346,7 @@ export async function createCommunityPost(
   const imageUrl = formData.get("imageUrl") as string;
   const subName = formData.get("subName") as string;
 
-  await prisma.postreddit.create({
+  const data = await prisma.postreddit.create({
     data: {
       title: title,
       imageString: imageUrl ?? undefined,
@@ -356,7 +356,7 @@ export async function createCommunityPost(
     },
   });
 
-  return redirect("/");
+  return redirect(`/post/${data.id}`);
 }
 
 export async function handleVote(formData: FormData) {
@@ -404,4 +404,21 @@ export async function handleVote(formData: FormData) {
   });
 
   return revalidatePath("/r");
+}
+
+export async function createComment(formData: FormData) {
+  const user = await requireUser();
+
+  const comment = formData.get("comment") as string;
+  const postId = formData.get("postId") as string;
+
+  const data = await prisma.comment.create({
+    data: {
+      text: comment,
+      userId: user.id,
+      postredditId: postId,
+    },
+  });
+
+  revalidatePath(`/post/${postId}`);
 }
