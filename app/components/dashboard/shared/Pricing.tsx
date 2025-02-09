@@ -8,10 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
-import { SubmitButton } from "../SubmitButton";
 import Link from "next/link";
-import { CreateSubscription } from "@/app/actions";
-import { TitleRotate } from "../../frontend/TitleRotate";
 
 interface iAppProps {
   id: number;
@@ -19,32 +16,48 @@ interface iAppProps {
   cardDescription: string;
   priceTitle: string;
   benefits: string[];
+  href: string;
 }
 
 export const PricingPlans: iAppProps[] = [
   {
     id: 0,
-    cardTitle: "Freelencer",
-    cardDescription: "The best pricing plan for people starting o out.",
+    cardTitle: "빅데이터기반의 멀티사무관리원 양성과정",
+    cardDescription: "ADsP + 전산세무회계(FAT1급, TAT2급)",
     benefits: [
-      "1 site",
-      "up to 1000 visitors",
-      "up to 1000 visitors",
-      "up to 1000 visitors",
+      "교육훈련비 100% 국비지원",
+      "6개월간 500,000원 구직촉진수당 지원",
+      "3개월간 300,000원 훈련수당 지원 ",
+      "교재비 무료",
     ],
-    priceTitle: "Free",
+    priceTitle: "본인부담금 없음",
+    href: "/courses/01",
   },
   {
     id: 1,
-    cardTitle: "Freelencer",
-    cardDescription: "The best pricing plan for professionals",
+    cardTitle: "빅데이터기반의 멀티사무관리원 양성과정",
+    cardDescription: "ADsP + 전산세무회계(FAT1급, TAT2급)",
     benefits: [
       "unlimited sites",
       "up to 1000 visitors",
       "up to 1000 visitors",
       "up to 1000 visitors",
     ],
-    priceTitle: "$29",
+    priceTitle: "200,000원",
+    href: "/courses/02",
+  },
+  {
+    id: 2,
+    cardTitle: "빅데이터기반의 멀티사무관리원 양성과정",
+    cardDescription: "ADsP + 전산세무회계(FAT1급, TAT2급)",
+    benefits: [
+      "unlimited sites",
+      "up to 1000 visitors",
+      "up to 1000 visitors",
+      "up to 1000 visitors",
+    ],
+    priceTitle: "200,000원",
+    href: "/courses/03",
   },
 ];
 
@@ -60,20 +73,31 @@ export function PricingTable() {
             <CardHeader>
               <CardTitle>
                 {item.id === 1 ? (
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-primary">Stratup</h3>
+                  <div className="flex flex-col items-center gap-y-2">
                     <p className="rounded-full bg-primary/20 px-3 py-1 text-xs leading-5 text-primary">
-                      국비지원
+                      모집중 과정
                     </p>
+                    <h3 className="text-primary text-center text-balance">
+                      {item.cardTitle}
+                    </h3>
                   </div>
                 ) : (
-                  <>{item.cardTitle}</>
+                  <div className="flex flex-col items-center gap-y-2">
+                    <p className="rounded-full bg-muted px-3 py-1 text-xs leading-5 ">
+                      진행중 과정
+                    </p>
+                    <h3 className="text-center text-balance">
+                      {item.cardTitle}
+                    </h3>
+                  </div>
                 )}
               </CardTitle>
-              <CardDescription>{item.cardDescription}</CardDescription>
+              <CardDescription className="text-center">
+                {item.cardDescription}
+              </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>{item.priceTitle}</p>
+              <p className="">{item.priceTitle}</p>
               <ul className="mt-8 space-y-3 text-sm leading-6 text-muted-foreground">
                 {item.benefits.map((benefit, index) => (
                   <li key={index} className="flex gap-x-3">
@@ -85,12 +109,12 @@ export function PricingTable() {
             </CardContent>
             <CardFooter>
               {item.id === 1 ? (
-                <form className="w-full" action={CreateSubscription}>
-                  <SubmitButton text="buy plan" className="mt-5 w-full" />
-                </form>
+                <Button className="mt-5 w-full" asChild>
+                  <Link href={item.href}>상담 및 과정 신청하기</Link>
+                </Button>
               ) : (
                 <Button variant="outline" className="mt-5 w-full" asChild>
-                  <Link href="/dashboard">Choose Plan</Link>
+                  <Link href={item.href}>자세히보기</Link>
                 </Button>
               )}
             </CardFooter>

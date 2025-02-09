@@ -110,11 +110,6 @@ const MENUS = [
     // component: ComicsComponent,
   },
   {
-    text: "교육신청",
-    href: "/education",
-  },
-
-  {
     text: "커뮤니티",
     href: "/r",
   },

@@ -1,5 +1,5 @@
 interface iAppProps {
-  section: string;
+  section?: string;
   mainTitle: string;
   subTitle?: string;
   subTitle2?: string;

@@ -36,24 +36,24 @@ interface iAppProps {
 }
 
 async function getData(userId: string, siteId: string) {
-  const data = await prisma.post.findMany({
+  const data = await prisma.site.findUnique({
     where: {
+      id: siteId,
       userId: userId,
-      siteId: siteId,
     },
     select: {
-      image: true,
-      title: true,
-      createdAt: true,
-      id: true,
-      Site: {
+      subdirectory: true,
+      posts: {
         select: {
-          subdirectory: true,
+          image: true,
+          title: true,
+          createdAt: true,
+          id: true,
+        },
+        orderBy: {
+          createdAt: "desc",
         },
       },
-    },
-    orderBy: {
-      createdAt: "desc",
     },
   });
 
@@ -72,32 +72,33 @@ export default async function SiteIdRoute({ params }: iAppProps) {
 
   return (
     <>
-      <div className="flex w-full justify-end gap-x-4 ">
+      <div className="flex w-full justify-end gap-x-4">
         <Button asChild variant="secondary">
-          <Link href={`/blog/${data[0].Site?.subdirectory}`}>
-            <Book className="size-4" />
-            블로그 보기
+          <Link href={`/blog/${data?.subdirectory}`}>
+            <Book className="size-4 mr-2" />
+            View Blog
           </Link>
         </Button>
         <Button asChild variant="secondary">
           <Link href={`/dashboard/sites/${siteId}/settings`}>
-            <Settings className="size-4" />
-            세팅
+            <Settings className="size-4 mr-2" />
+            Settings
           </Link>
         </Button>
         <Button asChild>
           <Link href={`/dashboard/sites/${siteId}/create`}>
-            <PlusCircle className="size-4" />
-            글쓰기
+            <PlusCircle className="size-4 mr-2" />
+            Create Article
           </Link>
         </Button>
       </div>
-      {data === undefined || data.length === 0 ? (
+
+      {data?.posts === undefined || data.posts.length === 0 ? (
         <EmptyState
-          title="사이트 만들기"
-          description="현재 생성된 사이트가 없습니다. 새로운 사이트를 만들어 주세요!"
+          title="You dont have any Articles created"
+          description="You currently dont have any articles. please create some so that you can see them right here"
+          buttonText="Create Article"
           href={`/dashboard/sites/${siteId}/create`}
-          buttonText="사이트 만들기"
         />
       ) : (
         <div>
@@ -105,14 +106,14 @@ export default async function SiteIdRoute({ params }: iAppProps) {
             <CardHeader>
               <CardTitle>Articles</CardTitle>
               <CardDescription>
-                manage article in a simple and instructive interface
+                Manage your Articles in a simple and intuitive interface
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Imate</TableHead>
+                    <TableHead>Image</TableHead>
                     <TableHead>Title</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Created At</TableHead>
@@ -120,15 +121,15 @@ export default async function SiteIdRoute({ params }: iAppProps) {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {data.map((item) => (
+                  {data.posts.map((item) => (
                     <TableRow key={item.id}>
                       <TableCell>
                         <Image
                           src={item.image}
-                          width={60}
-                          height={60}
-                          alt="Article cover image"
-                          className=" size-16 rounded-md object-cover"
+                          width={64}
+                          height={64}
+                          alt="Article Cover Image"
+                          className="size-16 rounded-md object-cover"
                         />
                       </TableCell>
                       <TableCell className="font-medium">
@@ -143,10 +144,11 @@ export default async function SiteIdRoute({ params }: iAppProps) {
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        {new Intl.DateTimeFormat("ko-KR", {
+                        {new Intl.DateTimeFormat("en-US", {
                           dateStyle: "medium",
                         }).format(item.createdAt)}
                       </TableCell>
+
                       <TableCell className="text-end">
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
