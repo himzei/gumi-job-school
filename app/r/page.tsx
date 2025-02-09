@@ -11,7 +11,21 @@ import { PostCard } from "../components/community/PostCard";
 import { Suspense } from "react";
 import { SuspenseCard } from "../components/community/SuspenseCard";
 import Pagination from "../components/community/Pagination";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { SubredditTags } from "../components/community/SubredditTas";
 
+async function getUsername(userId: string) {
+  const loginUser = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      username: true,
+    },
+  });
+
+  return loginUser;
+}
 async function getData(searchParams: string) {
   const [count, data] = await prisma.$transaction([
     prisma.postreddit.count(),
@@ -58,6 +72,10 @@ export default async function RedditHome({
   searchParams: Promise<{ page: string }>;
 }) {
   const { page } = await searchParams;
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const userInfo = await getUsername(user.id);
+  console.log(userInfo?.username);
   return (
     <div className="max-w-7xl mx-auto flex gap-x-10 my-16">
       {/* Left Side */}
@@ -68,7 +86,7 @@ export default async function RedditHome({
         </Suspense>
       </div>
       {/* Right Side */}
-      <div className="w-[35%]">
+      <div className="w-[35%] flex flex-col space-y-5">
         <Card>
           <Image src={Banner} alt="Banner" />
           <div className="p-2">
@@ -86,14 +104,19 @@ export default async function RedditHome({
             <Separator className="my-3" />
             <div className="flex flex-col gap-y-2">
               <Button asChild variant="secondary">
-                <Link href={`/r/himzei/create`}>커뮤니티 생성</Link>
+                <Link href={`/r/create`}>커뮤니티 생성</Link>
               </Button>
               <Button asChild>
-                <Link href="/r/create">글 작성하기</Link>
+                <Link href={`/r/${userInfo?.username}/create`}>
+                  글 작성하기
+                </Link>
               </Button>
             </div>
           </div>
         </Card>
+        {/* 태그 */}
+
+        <SubredditTags />
       </div>
     </div>
   );

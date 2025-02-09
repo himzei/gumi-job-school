@@ -12,6 +12,8 @@ async function getData(userId: string) {
     },
     select: {
       firstName: true,
+      lastName: true,
+      username: true,
     },
   });
 
@@ -28,7 +30,11 @@ export default async function SettingsPage() {
   const data = await getData(user.id);
   return (
     <div className="max-w-7xl min-h-[600px] mx-auto flex flex-col my-4">
-      <SettingsForm firstName={data?.firstName} />
+      <SettingsForm
+        firstName={data?.firstName}
+        lastName={data?.lastName}
+        username={data?.username}
+      />
     </div>
   );
 }

@@ -1,10 +1,8 @@
 import Image from "next/image";
 import Logo from "@/public/logo_s.png";
 import Link from "next/link";
-import { MobileMenu } from "./frontend/Hero";
 import { ThemeToggle } from "./dashboard/ThemeToggle";
 import { ProfileDropdown } from "./ProfileDropdown";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export function Navbar() {
   return (
@@ -34,7 +32,6 @@ export function Navbar() {
       <div className="px-4 h-full flex md:space-x-2 items-center z-10">
         <ThemeToggle />
         <ProfileDropdown />
-        {/* <ProfileDropdown /> */}
       </div>
     </div>
   );

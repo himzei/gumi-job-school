@@ -14,10 +14,15 @@ const initialState = {
 
 export function SettingsForm({
   firstName,
+  lastName,
+  username,
 }: {
   firstName: string | null | undefined;
+  lastName: string | null | undefined;
+  username: string | null | undefined;
 }) {
   const [state, formAction] = useActionState(updateUsername, initialState);
+  const imsi_username = `${lastName}${firstName}`;
   return (
     <form action={formAction}>
       <h1 className="text-3xl font-extrabold tracking-tight">설정</h1>
@@ -27,8 +32,8 @@ export function SettingsForm({
         커뮤니티에서 활동할 사용자이름을 설정해 주세요
       </p>
       <Input
-        defaultValue={firstName ?? undefined}
-        name="firstName"
+        defaultValue={username ?? undefined}
+        name="username"
         required
         className="mt-2"
         min={2}

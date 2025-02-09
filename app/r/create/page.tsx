@@ -30,7 +30,9 @@ export default function SubredditPage() {
         </h1>
         <Separator className="my-4" />
         <Label className="text-lg">Name</Label>
-        <p className="text-muted-foreground">커뮤니티 이름을 생성해 주세요</p>
+        <p className="text-muted-foreground">
+          커뮤니티 이름을 영문으로 생성해 주세요
+        </p>
         <div className="relative mt-3">
           <p className="absolute left-0 w-8 flex items-center justify-center h-full text-muted-foreground">
             r/

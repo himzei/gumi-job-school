@@ -17,6 +17,7 @@ import { useParams } from "next/navigation";
 import { UploadDropzone } from "@/app/utils/Uploadthingcomponents";
 import { toast } from "sonner";
 import { createCommunityPost } from "@/app/actions";
+import { SubredditTags } from "@/app/components/community/SubredditTas";
 
 const rules = [
   {
@@ -46,11 +47,7 @@ const rules = [
   },
 ];
 
-interface iAppProps {
-  params: Promise<{ id: string }>;
-}
-
-export default function CreatePostRoute({ params }: iAppProps) {
+export default function CreatePostRoute() {
   const { id } = useParams<{ id: string }>();
   const [imageUrl, setImageUrl] = useState<string>("");
   const [json, setJson] = useState<JSONContent>({});
@@ -63,8 +60,8 @@ export default function CreatePostRoute({ params }: iAppProps) {
     <div className="max-w-7xl w-full my-16 mx-auto flex gap-x-10">
       {/* Left Side */}
       <div className="w-[65%] flex flex-col gap-y-5">
-        <h1 className="font-semibold">
-          Subreddit:{" "}
+        <h1 className="font-semibold ">
+          카테고리:{" "}
           <Link href={`/r/${id}`} className="text-primary">
             {id}
           </Link>

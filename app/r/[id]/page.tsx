@@ -2,6 +2,7 @@ import { CreatePostCard } from "@/app/components/community/CreatePostCard";
 import Pagination from "@/app/components/community/Pagination";
 import { PostCard } from "@/app/components/community/PostCard";
 import { SubDescriptionForm } from "@/app/components/community/SubDescriptionForm";
+import { SubredditTags } from "@/app/components/community/SubredditTas";
 import prisma from "@/app/utils/db";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -112,9 +113,11 @@ export default async function SubRedditRoute({
         )}
       </div>
       {/* Card Section  */}
-      <div className="w-[35%]">
+      <div className="w-[35%] flex flex-col gap-5">
         <Card>
-          <div className="bg-muted p-4 font-semibold">about community</div>
+          <div className="bg-muted p-4 font-semibold uppercase">
+            about community
+          </div>
           <div className="p-4">
             <div className="flex items-center gap-x-3">
               <Image
@@ -161,6 +164,7 @@ export default async function SubRedditRoute({
             </Button>
           </div>
         </Card>
+        <SubredditTags />
       </div>
     </div>
   );

@@ -263,16 +263,18 @@ export async function updateUsername(prevState: any, formData: FormData) {
     return redirect("/api/auth/login");
   }
 
-  const firstName = formData.get("firstName") as string;
+  const username = formData.get("username") as string;
 
   await prisma.user.update({
     where: {
       id: user.id,
     },
     data: {
-      firstName: firstName,
+      username: username,
     },
   });
+
+  // revalidatePath("/settings");
 
   return {
     message: "successfull ",
@@ -286,6 +288,8 @@ export async function createCommunity(prevState: any, formData: FormData) {
   try {
     const name = formData.get("name") as string;
 
+    console.log(name, user.id);
+
     const data = await prisma.subreddit.create({
       data: {
         name: name,
@@ -293,7 +297,7 @@ export async function createCommunity(prevState: any, formData: FormData) {
       },
     });
 
-    return redirect(`r/${data.name}`);
+    return redirect(`/r/${data.name}`);
   } catch (e) {
     if (e instanceof Prisma.PrismaClientKnownRequestError) {
       if (e.code === "P2002") {
@@ -345,6 +349,20 @@ export async function createCommunityPost(
   const title = formData.get("title") as string;
   const imageUrl = formData.get("imageUrl") as string;
   const subName = formData.get("subName") as string;
+
+  const ok = await prisma.subreddit.findUnique({
+    where: {
+      name: subName,
+    },
+  });
+
+  if (!ok) {
+    await prisma.subreddit.create({
+      data: {
+        name: subName,
+      },
+    });
+  }
 
   const data = await prisma.postreddit.create({
     data: {
