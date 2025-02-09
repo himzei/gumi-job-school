@@ -67,8 +67,10 @@ export function PostCard({
               className="w-full h-full mt-2"
             />
           ) : (
-            <div>aa</div>
-            // <RenderToJson data={jsonContent} />
+            <>
+              {/* // <div>aa</div> */}
+              <RenderToJson data={jsonContent} />
+            </>
           )}
         </div>
 

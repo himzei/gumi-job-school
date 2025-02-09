@@ -1,30 +1,33 @@
-import {
-  NodeHandler,
-  TipTapRender,
-  NodeHandlers,
-} from "@troop.com/tiptap-react-render";
+"use client";
 
-const doc: NodeHandler = (props) => {
-  return <>{props.children}</>;
-};
-const paragraph: NodeHandler = (props) => {
-  return <p>{props.children}</p>;
-};
-
-const text: NodeHandler = (props) => {
-  return <span>{props.node.text}</span>;
-};
-
-const handlers: NodeHandlers = {
-  doc: doc,
-  text: text,
-  paragraph: paragraph,
-};
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import React, { useEffect, useState } from "react";
 
 export function RenderToJson({ data }: { data: any }) {
+  const [editable, setEditable] = useState(false);
+  const editor = useEditor({
+    shouldRerenderOnTransaction: false,
+    editable,
+    content: data,
+    extensions: [StarterKit],
+  });
+
+  useEffect(() => {
+    if (!editor) {
+      return undefined;
+    }
+
+    editor.setEditable(editable);
+  }, [editor, editable]);
+
+  if (!editor) {
+    return null;
+  }
+
   return (
-    <div className="px-2 pt-2 pros">
-      <TipTapRender handlers={handlers} node={data} />
+    <div className="px-2">
+      <EditorContent editor={editor} />
     </div>
   );
 }

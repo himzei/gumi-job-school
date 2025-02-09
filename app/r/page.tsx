@@ -8,61 +8,58 @@ import Link from "next/link";
 import { CreatePostCard } from "../components/community/CreatePostCard";
 import prisma from "../utils/db";
 import { PostCard } from "../components/community/PostCard";
+import { Suspense } from "react";
+import { SuspenseCard } from "../components/community/SuspenseCard";
+import Pagination from "../components/community/Pagination";
 
-async function getData() {
-  const data = await prisma.postreddit.findMany({
-    select: {
-      title: true,
-      createdAt: true,
-      textContent: true,
-      id: true,
-      imageString: true,
-      User: {
-        select: {
-          username: true,
+async function getData(searchParams: string) {
+  const [count, data] = await prisma.$transaction([
+    prisma.postreddit.count(),
+    prisma.postreddit.findMany({
+      take: 10,
+      skip: searchParams ? (Number(searchParams) - 1) * 10 : 0, // take:10
+      select: {
+        title: true,
+        createdAt: true,
+        textContent: true,
+        id: true,
+        imageString: true,
+        User: {
+          select: {
+            username: true,
+          },
+        },
+        subName: true,
+        Vote: {
+          select: {
+            userId: true,
+            voteType: true,
+            postredditId: true,
+          },
         },
       },
-      subName: true,
-      Vote: {
-        select: {
-          userId: true,
-          voteType: true,
-          postredditId: true,
-        },
+      orderBy: {
+        createdAt: "desc",
       },
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+    }),
+  ]);
 
-  return data;
+  return { data, count };
 }
 
-export default async function RedditHome() {
-  const data = await getData();
+export default function RedditHome({
+  searchParams,
+}: {
+  searchParams: { page: string };
+}) {
   return (
     <div className="max-w-7xl mx-auto flex gap-x-10 my-16">
       {/* Left Side */}
       <div className="w-[65%] flex flex-col gap-y-5">
         <CreatePostCard />
-        {data.map((post) => (
-          <PostCard
-            id={post.id}
-            imageString={post.imageString}
-            jsonContent={post.textContent}
-            subName={post.subName as string}
-            title={post.title}
-            userName={post.User?.username as string}
-            key={post.id}
-            voteCount={post.Vote.reduce((acc, vote) => {
-              if (vote.voteType === "UP") return acc + 1;
-              if (vote.voteType === "DOWN") return acc - 1;
-
-              return acc;
-            }, 0)}
-          />
-        ))}
+        <Suspense fallback={<SuspenseCard />}>
+          <ShowItems searchParams={searchParams} />
+        </Suspense>
       </div>
       {/* Right Side */}
       <div className="w-[35%]">
@@ -93,5 +90,33 @@ export default async function RedditHome() {
         </Card>
       </div>
     </div>
+  );
+}
+
+async function ShowItems({ searchParams }: { searchParams: { page: string } }) {
+  const { page } = await searchParams;
+  const { count, data } = await getData(page);
+  return (
+    <>
+      {data.map((post) => (
+        <PostCard
+          id={post.id}
+          imageString={post.imageString}
+          jsonContent={post.textContent}
+          subName={post.subName as string}
+          title={post.title}
+          userName={post.User?.username as string}
+          key={post.id}
+          voteCount={post.Vote.reduce((acc, vote) => {
+            if (vote.voteType === "UP") return acc + 1;
+            if (vote.voteType === "DOWN") return acc - 1;
+
+            return acc;
+          }, 0)}
+        />
+      ))}
+      {/* take 10 */}
+      <Pagination totalPages={Math.ceil(count / 10)} />
+    </>
   );
 }
