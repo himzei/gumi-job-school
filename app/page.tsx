@@ -7,6 +7,7 @@ import SubImg01 from "@/public/sub/sub001.png";
 import ListCarousel from "./components/frontend/ListCarousel";
 import { TitleRotate } from "./components/frontend/TitleRotate";
 import Features from "./introduce/components/Features";
+import { CommunityMain } from "./components/frontend/CommunityMain";
 
 export default async function Home() {
   return (
@@ -44,6 +45,17 @@ export default async function Home() {
           className="h-[300px]"
         />
         <ListCarousel />
+      </section>
+
+      <section
+        className="py-16"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+          backgroundSize: "cover",
+        }}
+      >
+        <CommunityMain />
       </section>
 
       <section className="bg-muted">

@@ -23,7 +23,7 @@ export default function ListItem({
   return (
     <Link href={href}>
       <div
-        className={`shrink-0 cursor-pointer group `}
+        className={`shrink-0 cursor-pointer group border border-muted`}
         style={{
           width: `${CARD_WIDTH}px`,
           height: `${CARD_HEIGHT}px`,
@@ -40,10 +40,10 @@ export default function ListItem({
           />
         </div>
         <div className="py-2 px-1">
-          <h2 className="text-sm font-semibold duration-500 group-hover:text-red-600 ">
+          <h2 className="text-sm font-semibold duration-500 group-hover:text-red-600 px-2 ">
             {title}
           </h2>
-          <h4 className="text-gray-500 text-sm">{description}</h4>
+          <h4 className="text-gray-500 text-sm px-2">{description}</h4>
         </div>
       </div>
     </Link>
