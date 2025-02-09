@@ -58,8 +58,8 @@ export default async function SubRedditRoute({
   params,
   searchParams,
 }: {
-  params: { id: string };
-  searchParams: { page: string };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ page: string }>;
 }) {
   const { id } = await params;
   const { page } = await searchParams;

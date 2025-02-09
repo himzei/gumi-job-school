@@ -50,7 +50,7 @@ async function getData(searchParams: string) {
 export default function RedditHome({
   searchParams,
 }: {
-  searchParams: { page: string };
+  searchParams: Promise<{ page: string }>;
 }) {
   return (
     <div className="max-w-7xl mx-auto flex gap-x-10 my-16">
@@ -93,7 +93,11 @@ export default function RedditHome({
   );
 }
 
-async function ShowItems({ searchParams }: { searchParams: { page: string } }) {
+async function ShowItems({
+  searchParams,
+}: {
+  searchParams: Promise<{ page: string }>;
+}) {
   const { page } = await searchParams;
   const { count, data } = await getData(page);
   return (
