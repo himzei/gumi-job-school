@@ -14,18 +14,6 @@ import Pagination from "../components/community/Pagination";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { SubredditTags } from "../components/community/SubredditTas";
 
-async function getUsername(userId: string) {
-  const loginUser = await prisma.user.findUnique({
-    where: {
-      id: userId,
-    },
-    select: {
-      username: true,
-    },
-  });
-
-  return loginUser;
-}
 async function getData(searchParams: string) {
   const [count, data] = await prisma.$transaction([
     prisma.postreddit.count(),
@@ -72,10 +60,7 @@ export default async function RedditHome({
   searchParams: Promise<{ page: string }>;
 }) {
   const { page } = await searchParams;
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-  const userInfo = await getUsername(user.id);
-  console.log(userInfo?.username);
+
   return (
     <div className="max-w-7xl mx-auto flex gap-x-10 my-16">
       {/* Left Side */}
@@ -103,14 +88,14 @@ export default async function RedditHome({
             </p>
             <Separator className="my-3" />
             <div className="flex flex-col gap-y-2">
-              <Button asChild variant="secondary">
+              <Button asChild>
                 <Link href={`/r/create`}>커뮤니티 생성</Link>
               </Button>
-              <Button asChild>
+              {/* <Button asChild>
                 <Link href={`/r/${userInfo?.username}/create`}>
                   글 작성하기
                 </Link>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </Card>

@@ -48,7 +48,7 @@ export default function SubredditPage() {
         <p className="mt-1 text-destructive text-sm">{state.message}</p>
         <div className="w-full flex mt-5 gap-x-5">
           <Button asChild variant="secondary" type="submit">
-            <Link href="/">취소</Link>
+            <Link href="/r">취소</Link>
           </Button>
           <SubmitButton text="생성하기" />
         </div>
