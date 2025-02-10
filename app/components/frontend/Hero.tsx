@@ -115,7 +115,7 @@ const MENUS = [
   },
   {
     text: "블로그",
-    href: "/blogs",
+    href: "/blog",
   },
 ];
 
