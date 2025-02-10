@@ -1,3 +1,4 @@
+import { PricingPlans } from "@/app/courses/courseData";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,57 +10,6 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import Link from "next/link";
-
-interface iAppProps {
-  id: number;
-  cardTitle: string;
-  cardDescription: string;
-  priceTitle: string;
-  benefits: string[];
-  href: string;
-}
-
-export const PricingPlans: iAppProps[] = [
-  {
-    id: 0,
-    cardTitle: "빅데이터기반의 멀티사무관리원 양성과정",
-    cardDescription: "ADsP + 전산세무회계(FAT1급, TAT2급)",
-    benefits: [
-      "교육훈련비 100% 국비지원",
-      "6개월간 500,000원 구직촉진수당 지원",
-      "3개월간 300,000원 훈련수당 지원 ",
-      "교재비 무료",
-    ],
-    priceTitle: "본인부담금 없음",
-    href: "/courses/course01",
-  },
-  {
-    id: 1,
-    cardTitle: "빅데이터기반의 멀티사무관리원 양성과정",
-    cardDescription: "ADsP + 전산세무회계(FAT1급, TAT2급)",
-    benefits: [
-      "unlimited sites",
-      "up to 1000 visitors",
-      "up to 1000 visitors",
-      "up to 1000 visitors",
-    ],
-    priceTitle: "200,000원",
-    href: "/courses/course02",
-  },
-  {
-    id: 2,
-    cardTitle: "빅데이터기반의 멀티사무관리원 양성과정",
-    cardDescription: "ADsP + 전산세무회계(FAT1급, TAT2급)",
-    benefits: [
-      "unlimited sites",
-      "up to 1000 visitors",
-      "up to 1000 visitors",
-      "up to 1000 visitors",
-    ],
-    priceTitle: "200,000원",
-    href: "/courses/course03",
-  },
-];
 
 export function PricingTable() {
   return (
