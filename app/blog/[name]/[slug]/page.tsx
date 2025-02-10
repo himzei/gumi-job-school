@@ -38,7 +38,7 @@ export default async function SlugRoute({ params }: iAppProps) {
   const data = await getData(slug);
   return (
     <>
-      <div className="flex flex-col">
+      <div className="w-full max-w-7xl flex flex-col">
         <div className="flex items-center gap-x-3 pb-5">
           <Button size="icon" variant="outline" asChild>
             <Link href={`/blog/${name}`}>
@@ -48,12 +48,15 @@ export default async function SlugRoute({ params }: iAppProps) {
           <h1 className="text-xl font-medium">Go Back</h1>
         </div>
 
-        <div className="flex flex-col items-center justify-center mb-10">
-          <div className="m-auto w-full text-center md:w-7/12">
+        <div className="flex flex-col items-center justify-center mb-10 max-w-5xl mx-auto">
+          <div className="m-auto w-full text-center ">
             <p className="m-auto my-5 w-10/12 text-sm font-light text-muted-foreground md:text-base">
-              {new Intl.DateTimeFormat("en-US", {
-                dateStyle: "medium",
-              }).format(data.createdAt)}
+              {new Date(data?.createdAt as Date).toLocaleDateString("kr-ko", {
+                weekday: "long",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}{" "}
             </p>
             <h1 className="mb-5 text-3xl font-bold md:text-6xl tracking-tight">
               {data.title}
@@ -64,7 +67,7 @@ export default async function SlugRoute({ params }: iAppProps) {
           </div>
         </div>
 
-        <div className="relative m-auto mb-10 w-full max-w-screen-lg overflow-hidden md:mb-20  md:w-5/6 md:rounded-2xl lg:w-2/3">
+        <div className="relative m-auto mb-8 w-full max-w-5xl overflow-hidden md:mb-16  md:rounded-2xl ">
           <Image
             src={data.image}
             alt={data.title}

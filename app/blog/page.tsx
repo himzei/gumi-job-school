@@ -34,7 +34,7 @@ export default async function BlogsPage() {
   const posts = await getData();
   return (
     <>
-      <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-3">
         {posts.map((item) => (
           <ItemContainer
             key={item.id}

@@ -37,7 +37,7 @@ export function RenderArticle({ json }: { json: JSONContent }) {
   }, [json]);
   return (
     <div
-      className="prose m-auto w-11/12 sm:prose-lg dark:prose-invert sm:w-2/3 prose-li:marker:text-primary"
+      className=" prose m-auto  sm:prose-lg dark:prose-invert w-full max-w-5xl px-4  prose-li:marker:text-primary mb-16"
       dangerouslySetInnerHTML={{ __html: outPut }}
     />
   );

@@ -53,7 +53,7 @@ export default async function BlogIndexPage({ params }: iAppProps) {
   const data = await getData(name);
   return (
     <>
-      <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
         {data.posts.map((item) => (
           <Card key={item.id}>
             <Image
