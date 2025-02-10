@@ -30,8 +30,6 @@ export default function ArticleCreationRoute() {
   const params = useParams<{ siteId: string }>();
 
   const [imageUrl, setImageUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [slug, setSlugValue] = useState("");
   const [value, setValue] = useState<JSONContent>({});
   const [lastResult, action] = useActionState(CreatePostAction, undefined);
 
@@ -46,17 +44,6 @@ export default function ArticleCreationRoute() {
     shouldRevalidate: "onInput",
   });
 
-  function handleSlugGeneration() {
-    const titleInput = title;
-
-    if (titleInput?.length === 0 || titleInput === undefined) {
-      return toast.error("제목을 먼저 작성해 주세요");
-    }
-
-    setSlugValue(titleInput.replace(" ", "-"));
-
-    return toast.success("Slug가 작성되었습니다.");
-  }
   return (
     <>
       <div className="flex items-center">
@@ -85,46 +72,23 @@ export default function ArticleCreationRoute() {
           >
             <input type="hidden" name="siteId" value={params.siteId} />
             <div className="grid gap-2">
-              <Label>Title</Label>
+              <Label>블로그 제목</Label>
               <Input
                 key={fields.title.key}
                 name={fields.title.name}
                 defaultValue={fields.title.initialValue}
-                placeholder="Nextjs blogging application"
-                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Title"
               />
               <p className="text-red-500 text-sm">{fields.title.errors}</p>
             </div>
 
             <div className="grid gap-2">
-              <Label>slug</Label>
-              <Input
-                placeholder="article slug"
-                key={fields.slug.key}
-                name={fields.slug.name}
-                defaultValue={fields.slug.initialValue}
-                onChange={(e) => setSlugValue(e.target.value)}
-                value={slug}
-              />
-              <Button
-                onClick={handleSlugGeneration}
-                className="w-fit"
-                variant="secondary"
-                type="button"
-              >
-                <Atom className="size-4 mr-2" />
-                Generate Slug
-              </Button>
-              <p className="text-red-500 text-sm">{fields.slug.errors}</p>
-            </div>
-
-            <div className="grid gap-2">
-              <Label>Small Description</Label>
+              <Label>간단한 설명</Label>
               <Textarea
                 key={fields.smallDescription.key}
                 name={fields.smallDescription.name}
                 defaultValue={fields.smallDescription.initialValue}
-                placeholder="Small description for your blog article"
+                placeholder="Small description"
                 className="h-32"
               />
               <p className="text-red-500 text-sm">
@@ -133,7 +97,7 @@ export default function ArticleCreationRoute() {
             </div>
 
             <div className="grid gap-2">
-              <Label>Cover Image</Label>
+              <Label>이미지</Label>
               <input
                 type="hidden"
                 key={fields.coverImage.key}
@@ -165,7 +129,7 @@ export default function ArticleCreationRoute() {
             </div>
 
             <div className="grid gap-2">
-              <Label>Article Content</Label>
+              <Label>본문</Label>
               <input
                 type="hidden"
                 name={fields.articleContent.name}

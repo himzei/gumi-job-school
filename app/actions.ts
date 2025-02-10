@@ -83,7 +83,7 @@ export async function CreatePostAction(prevState: any, formData: FormData) {
     data: {
       title: submission.value.title,
       smallDescription: submission.value.smallDescription,
-      slug: submission.value.slug,
+      slug: String(Date.now()),
       articleContent: JSON.parse(submission.value.articleContent),
       image: submission.value.coverImage,
       userId: user.id,
@@ -113,7 +113,7 @@ export async function EditPostAction(prevState: any, formData: FormData) {
     data: {
       title: submission.value.title,
       smallDescription: submission.value.smallDescription,
-      slug: submission.value.slug,
+      slug: String(Date.now()),
       articleContent: JSON.parse(submission.value.articleContent),
       image: submission.value.coverImage,
     },

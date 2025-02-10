@@ -53,18 +53,6 @@ export default async function BlogIndexPage({ params }: iAppProps) {
   const data = await getData(name);
   return (
     <>
-      <nav className="grid grid-cols-3 my-10">
-        <div className="col-span-1" />
-        <div className="flex items-center gap-x-2 justify-center">
-          <Image src={Logo} alt="logo" width={40} height={40} />
-          <h1 className="text-3xl font-semibold tracking-tight">{data.name}</h1>
-        </div>
-
-        <div className="col-span-1 flex w-full justify-end">
-          <ThemeToggle />
-        </div>
-      </nav>
-
       <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
         {data.posts.map((item) => (
           <Card key={item.id}>

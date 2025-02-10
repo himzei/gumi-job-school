@@ -18,6 +18,8 @@ interface iAppProps {
   smallDescription: string;
   image: string;
   createdAt: any;
+  slug: string;
+  subName: string;
 }
 
 export function ItemContainer({
@@ -27,6 +29,8 @@ export function ItemContainer({
   smallDescription,
   image,
   createdAt,
+  slug,
+  subName,
 }: iAppProps) {
   return (
     <Card key={id}>
@@ -38,14 +42,14 @@ export function ItemContainer({
         height={200}
       />
       <CardHeader>
-        <CardTitle className="truncate">{title}</CardTitle>
+        <CardTitle className="truncate text-xl">{title}</CardTitle>
         <CardDescription className="line-clamp-3">
           {smallDescription}
         </CardDescription>
       </CardHeader>
       <CardFooter>
         <Button asChild className="w-full">
-          <Link href="/">자세히보기</Link>
+          <Link href={`/blog/${subName}/${slug}`}>자세히보기</Link>
         </Button>
       </CardFooter>
     </Card>
