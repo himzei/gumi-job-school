@@ -10,11 +10,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { useForm } from "@conform-to/react";
 import Image from "next/image";
 import { UploadDropzone } from "@/app/utils/Uploadthingcomponents";
-import { Atom } from "lucide-react";
 import { useActionState, useState } from "react";
 import { JSONContent } from "novel";
 import { parseWithZod } from "@conform-to/zod";
@@ -55,18 +53,6 @@ export function EditArticleForm({ data, siteId }: iAppProps) {
     shouldRevalidate: "onInput",
   });
 
-  function handleSlugGeneration() {
-    const titleInput = title;
-
-    if (titleInput?.length === 0 || titleInput === undefined) {
-      return toast.error("제목을 먼저 작성해 주세요");
-    }
-
-    setSlugValue(titleInput.replace(" ", "-"));
-
-    return toast.success("Slug가 작성되었습니다.");
-  }
-
   return (
     <Card>
       <CardHeader>
@@ -95,28 +81,6 @@ export function EditArticleForm({ data, siteId }: iAppProps) {
               onChange={(e) => setTitle(e.target.value)}
             />
             <p className="text-red-500 text-sm">{fields.title.errors}</p>
-          </div>
-
-          <div className="grid gap-2">
-            <Label>slug</Label>
-            <Input
-              placeholder="article slug"
-              key={fields.slug.key}
-              name={fields.slug.name}
-              defaultValue={fields.slug.initialValue}
-              onChange={(e) => setSlugValue(e.target.value)}
-              value={slug}
-            />
-            <Button
-              onClick={handleSlugGeneration}
-              className="w-fit"
-              variant="secondary"
-              type="button"
-            >
-              <Atom className="size-4 mr-2" />
-              Generate Slug
-            </Button>
-            <p className="text-red-500 text-sm">{fields.slug.errors}</p>
           </div>
 
           <div className="grid gap-2">
