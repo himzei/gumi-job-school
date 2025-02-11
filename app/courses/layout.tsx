@@ -10,9 +10,6 @@ export default function layoutIntroduce({
 }) {
   return (
     <>
-      <div>
-        <Hero />
-      </div>
       <SubPageTitle
         subTitle="course"
         mainTitle="국비지원과정"

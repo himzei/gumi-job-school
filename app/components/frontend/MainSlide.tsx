@@ -16,6 +16,7 @@ import MainSlide2 from "@/public/introduce/002.png";
 import MainSlide3 from "@/public/introduce/003.png";
 import MainSlide4 from "@/public/introduce/004.png";
 import MainSlide5 from "@/public/introduce/005.png";
+import Link from "next/link";
 
 const testimonials = [
   {
@@ -24,7 +25,7 @@ const testimonials = [
     description: "빅데이터 분석 기반의 멀티 전문인력 양성과정(컴활+FAT+TAT)",
     name: "산업구조변화 대응 특화훈련",
     title: "한국직업교육학원을\n 소개합니다",
-    link: "https://www.daum.net",
+    link: "/introduce",
     // link2: "https://msn.com",
   },
   {
@@ -58,7 +59,7 @@ const testimonials = [
     //   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendusda.",
     // name: "생생합격후기",
     title: "SNS 해시테그 이벤트에 참여하세요",
-    link: "https://www.marvel.com",
+    link: "/blog/promotion/hee",
   },
 ];
 
@@ -138,32 +139,15 @@ const Card = ({
         className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 flex flex-col items-center justify-center"
       >
         <div className="absolute top-0 left-0 w-full h-full flex justify-center">
-          <Image
-            src={back}
-            width={1920}
-            height={500}
-            alt="lima"
-            className="w-full h-full object-cover object-center "
-          />
-          <div className="absolute px-4 left-[50%] -translate-x-[50%] max-w-7xl w-full h-full flex flex-col justify-center space-y-4">
-            <div className="h-28">
-              {/* <img
-                src={image}
-                alt="main_logo"
-                className="h-full object-cover"
-              /> */}
-            </div>
-            {/* <h1 className="text-white text-4xl font-bold uppercase ">{name}</h1>
-            <p className="text-xl w-2/3 md:w-1/2 text-white">{description}</p>
-            <div className="py-4 flex space-x-4">
-              {link && (
-                <Link href={link}>
-                  <Button variant="outline">자세히보기</Button>
-                </Link>
-              )}
-              {link2 && <ButtonCustom type="unlock now" link={link2} />}
-            </div> */}
-          </div>
+          <Link href={link}>
+            <Image
+              src={back}
+              width={1920}
+              height={500}
+              alt="lima"
+              className="w-full h-full object-cover object-center "
+            />
+          </Link>
         </div>
       </motion.div>
     </div>

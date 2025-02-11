@@ -10,9 +10,6 @@ export default function layoutIntroduce({
 }) {
   return (
     <>
-      <div>
-        <Hero />
-      </div>
       <SubPageTitle
         subTitle="blog"
         mainTitle="블로그"

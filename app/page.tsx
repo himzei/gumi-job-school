@@ -1,4 +1,3 @@
-import { Hero } from "./components/frontend/Hero";
 import MainSlide from "./components/frontend/MainSlide";
 import { PricingTable } from "./components/dashboard/shared/Pricing";
 import { Footer } from "./components/frontend/Footer";
@@ -8,18 +7,10 @@ import ListCarousel from "./components/frontend/ListCarousel";
 import { TitleRotate } from "./components/frontend/TitleRotate";
 import Features from "./introduce/components/Features";
 import { CommunityMain } from "./components/frontend/CommunityMain";
-import {
-  getKindeServerSession,
-  LoginLink,
-  RegisterLink,
-} from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default async function Home() {
   return (
     <>
-      <section className=" mx-auto ">
-        <Hero />
-      </section>
       <section className="w-full mx-auto">
         <MainSlide />
       </section>

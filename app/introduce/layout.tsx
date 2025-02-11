@@ -7,9 +7,6 @@ export default function layoutIntroduce({
 }) {
   return (
     <>
-      <div>
-        <Hero />
-      </div>
       {children}
       <section className="bg-muted">
         <Footer />
