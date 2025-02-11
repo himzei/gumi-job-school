@@ -8,6 +8,7 @@ import ListCarousel from "./components/frontend/ListCarousel";
 import { TitleRotate } from "./components/frontend/TitleRotate";
 import Features from "./introduce/components/Features";
 import { CommunityMain } from "./components/frontend/CommunityMain";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default async function Home() {
   return (
@@ -44,6 +45,7 @@ export default async function Home() {
           backImg={SubImg01}
           className="h-[300px]"
         />
+
         <ListCarousel />
       </section>
 

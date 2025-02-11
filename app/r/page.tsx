@@ -11,7 +11,6 @@ import { PostCard } from "../components/community/PostCard";
 import { Suspense } from "react";
 import { SuspenseCard } from "../components/community/SuspenseCard";
 import Pagination from "../components/community/Pagination";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { SubredditTags } from "../components/community/SubredditTas";
 
 async function getData(searchParams: string) {
