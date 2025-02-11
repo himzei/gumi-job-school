@@ -22,7 +22,7 @@ export default function ListCarousel() {
     getData();
   }, []);
 
-  const CARD_WIDTH = 0;
+  const CARD_WIDTH = 300;
   const MARGIN = 8;
   const CARD_SIZE = CARD_WIDTH + MARGIN + 8;
 
