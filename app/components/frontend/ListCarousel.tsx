@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import useMeasure from "react-use-measure";
 import ListItem, { iAppProps } from "./ListItem";
+import { ItemContainer } from "../blogs/ItemContainer";
 
 export default function ListCarousel() {
   const [lists, setLists] = useState<any[]>([]);
+
   useEffect(() => {
     async function getData() {
       const response = await fetch("/api/blog");
@@ -18,8 +20,7 @@ export default function ListCarousel() {
     getData();
   }, []);
 
-  const CARD_WIDTH = 195;
-  const CARD_HEIGHT = 340;
+  const CARD_WIDTH = 300;
   const MARGIN = 8;
   const CARD_SIZE = CARD_WIDTH + MARGIN + 8;
 
@@ -58,7 +59,7 @@ export default function ListCarousel() {
         {/* 컨테이너 */}
         <div
           ref={ref}
-          className="relative max-w-7xl w-full h-[380px] p-2  bg-white overflow-hidden "
+          className="relative max-w-7xl w-full p-2 bg-white overflow-hidden "
         >
           <motion.div
             animate={{
@@ -67,16 +68,14 @@ export default function ListCarousel() {
             className="flex"
           >
             {lists?.map((item) => (
-              <ListItem
+              <ItemContainer
+                id={item.id}
                 key={item.id}
-                imgCard={item.image}
+                image={item.image}
                 title={item.title}
-                description={item.smallDescription}
+                smallDescription={item.smallDescription}
                 slug={item.slug}
                 subName={item.Site?.name as string}
-                CARD_WIDTH={CARD_WIDTH}
-                CARD_HEIGHT={CARD_HEIGHT}
-                MARGIN={MARGIN}
               />
             ))}
           </motion.div>
