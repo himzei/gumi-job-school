@@ -2,19 +2,26 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
+import Link from "next/link";
 
 export function Footer() {
   return (
     <div className="flex flex-col max-w-7xl w-full mx-auto py-8">
       <div className="flex justify-between">
         <div className="flex text-sm font-light space-x-2 border-b border-gray-300 pb-4">
-          <p>HOME</p>
+          <Link href="/">
+            <p>HOME</p>
+          </Link>
           <span className="-translate-y-[1px]">|</span>
           <p className="font-bold">개인정보취급방침</p>
           <span className="-translate-y-[1px]">|</span>
-          <p>온라인 입학상담</p>
+          <Link href="courses">
+            <p>온라인 입학상담</p>
+          </Link>
           <span className="-translate-y-[1px]">|</span>
-          <p>오시는 길</p>
+          <Link href="/introduce">
+            <p>오시는 길</p>
+          </Link>
         </div>
         <div className="flex space-x-2 items-center">
           <RiKakaoTalkFill className="size-7" />

@@ -72,7 +72,8 @@ export default async function BlogsPage() {
                 image={item.image}
                 createdAt={item.createdAt}
                 slug={item.slug}
-                subName={item.subdirectory}
+                subName={item.siteName}
+                subdirectory={item.subdirectory}
               />
             ))}
           </div>

@@ -8,7 +8,6 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MenuOpenContext } from "./MenuOpenContext";
 import NavLink from "./NavLink";
-import { Navbar } from "../Navbar";
 
 const MobileMenuLink = ({ menu }: any) => {
   return (
@@ -130,11 +129,6 @@ export function Hero() {
         value={{ menuOpen, setMenuOpen, setMenuContent }}
       >
         <div className="sticky top-0  transition-all duration-700">
-          <div className="max-w-7xl mx-auto w-full h-24 flex justify-center z-10 ">
-            {/* Navbar */}
-            <Navbar />
-          </div>
-
           <div className="w-full bg-muted h-10 border-t -z-10 border-slate-300 hidden md:flex justify-center uppercase items-center space-x-8">
             {MENUS.map((menu) => (
               <NavLink

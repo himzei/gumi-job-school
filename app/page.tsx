@@ -8,7 +8,11 @@ import ListCarousel from "./components/frontend/ListCarousel";
 import { TitleRotate } from "./components/frontend/TitleRotate";
 import Features from "./introduce/components/Features";
 import { CommunityMain } from "./components/frontend/CommunityMain";
-import { Skeleton } from "@/components/ui/skeleton";
+import {
+  getKindeServerSession,
+  LoginLink,
+  RegisterLink,
+} from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default async function Home() {
   return (
