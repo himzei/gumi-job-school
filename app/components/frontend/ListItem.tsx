@@ -1,19 +1,21 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-interface iAppProps {
-  imgCard: StaticImageData;
-  href: string;
+export interface iAppProps {
+  imgCard: string;
   title: string;
   description: string;
+  slug: string;
+  subName: string;
   CARD_WIDTH: number;
   CARD_HEIGHT: number;
   MARGIN: number;
 }
 
 export default function ListItem({
-  href,
   imgCard,
+  slug,
+  subName,
   CARD_WIDTH,
   CARD_HEIGHT,
   MARGIN,
@@ -21,7 +23,7 @@ export default function ListItem({
   description,
 }: iAppProps) {
   return (
-    <Link href={href}>
+    <Link href={`/post/${subName}/${slug}`}>
       <div
         className={`shrink-0 cursor-pointer group border border-muted`}
         style={{

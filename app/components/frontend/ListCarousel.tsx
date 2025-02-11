@@ -1,79 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import useMeasure from "react-use-measure";
-import ListItem from "./ListItem";
-import DefaultImg from "@/public/default.png";
-
-const lists = [
-  {
-    id: 0,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 1,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 2,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 3,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 4,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 5,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 6,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 7,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-  {
-    id: 8,
-    imgCard: DefaultImg,
-    title: "title test",
-    description: "title description",
-    href: "#",
-  },
-];
+import ListItem, { iAppProps } from "./ListItem";
 
 export default function ListCarousel() {
+  const [lists, setLists] = useState<any[]>([]);
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch("/api/blog");
+      const data = await response.json();
+      setLists(data);
+    }
+
+    getData();
+  }, []);
+
   const CARD_WIDTH = 195;
   const CARD_HEIGHT = 340;
   const MARGIN = 8;
@@ -125,10 +69,11 @@ export default function ListCarousel() {
             {lists?.map((item) => (
               <ListItem
                 key={item.id}
-                imgCard={item.imgCard}
+                imgCard={item.image}
                 title={item.title}
-                description={item.description}
-                href={item.href}
+                description={item.smallDescription}
+                slug={item.slug}
+                subName={item.Site?.name as string}
                 CARD_WIDTH={CARD_WIDTH}
                 CARD_HEIGHT={CARD_HEIGHT}
                 MARGIN={MARGIN}

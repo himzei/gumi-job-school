@@ -2,7 +2,7 @@ import prisma from "../utils/db";
 import { notFound } from "next/navigation";
 import { ItemContainer } from "../components/blogs/ItemContainer";
 
-async function getData() {
+async function getPostData() {
   const posts = await prisma.post.findMany({
     select: {
       id: true,
@@ -31,7 +31,7 @@ async function getData() {
 }
 
 export default async function BlogsPage() {
-  const posts = await getData();
+  const posts = await getPostData();
   return (
     <>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:gap-3">
