@@ -30,6 +30,7 @@ export default async function Navbar() {
       },
     })
     .catch(() => null);
+
   return (
     <>
       <div className="max-w-7xl mx-auto w-full h-24 flex justify-center z-10 ">
@@ -80,9 +81,8 @@ export default async function Navbar() {
           </div>
         </div>
       </div>
-      <section className=" mx-auto ">
-        <Hero />
-      </section>
+
+      <Hero />
     </>
   );
 }

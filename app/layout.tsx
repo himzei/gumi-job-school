@@ -62,6 +62,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
+
           {children}
           <Toaster richColors closeButton />
           <Analytics />

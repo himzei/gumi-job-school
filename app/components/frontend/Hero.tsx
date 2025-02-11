@@ -124,11 +124,11 @@ export function Hero() {
   const showFlyout = menuContent && menuOpen;
 
   return (
-    <>
+    <section className="mx-auto sticky top-0 transition-all duration-700 z-20 shadow-lg">
       <MenuOpenContext.Provider
         value={{ menuOpen, setMenuOpen, setMenuContent }}
       >
-        <div className="sticky top-0  transition-all duration-700">
+        <div>
           <div className="w-full bg-muted h-10 border-t -z-10 border-slate-300 hidden md:flex justify-center uppercase items-center space-x-8">
             {MENUS.map((menu) => (
               <NavLink
@@ -160,6 +160,6 @@ export function Hero() {
           </AnimatePresence>
         </div>
       </MenuOpenContext.Provider>
-    </>
+    </section>
   );
 }
