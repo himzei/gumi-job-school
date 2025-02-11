@@ -66,7 +66,7 @@ export default function Features() {
             {itemLists1.map((item, i) => (
               <div
                 key={i}
-                className="bg-white w-[340px] aspect-square py-10 border border-gray-200 shadow-xl flex flex-col justify-between space-y-8 rounded-lg group hover:shadow-none hover:-translate-x-1 hover:-translate-y-1 duration-500"
+                className="bg-white dark:bg-muted w-[340px] aspect-square py-10 border border-gray-200 shadow-xl flex flex-col justify-between space-y-8 rounded-lg group hover:shadow-none hover:-translate-x-1 hover:-translate-y-1 duration-500"
               >
                 {/* title */}
                 <div className="flex px-8 justify-between items-center text-xl">
@@ -106,7 +106,7 @@ export default function Features() {
             {itemLists2.map((item, i) => (
               <div
                 key={i}
-                className="w-[320px] aspect-square py-8 border border-gray-200 shadow-xl flex flex-col justify-between space-y-4 rounded-lg bg-white group hover:shadow-none hover:-translate-x-1 hover:-translate-y-1 duration-500"
+                className="w-[320px] aspect-square py-8 border border-gray-200 shadow-xl flex flex-col justify-between space-y-4 rounded-lg bg-white dark:bg-muted group hover:shadow-none hover:-translate-x-1 hover:-translate-y-1 duration-500"
               >
                 {/* title */}
                 <div className="flex px-8 justify-between items-center text-xl">

@@ -180,7 +180,7 @@ export default function MainSlide() {
       />
       <div className="w-full flex justify-center  ">
         <div className="max-w-7xl w-full py-8 grid grid-cols-1 md:grid-cols-[3fr_1fr]">
-          <div className="-translate-y-8 md:-translate-y-14 z-10 bg-white md:pl-4 h-full">
+          <div className="-translate-y-8 md:-translate-y-14 z-10 bg-white dark:bg-muted md:pl-4 h-16">
             <SelectBtns
               numTracks={testimonials}
               setSelected={setSelected}

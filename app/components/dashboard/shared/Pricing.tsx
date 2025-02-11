@@ -14,7 +14,7 @@ import Link from "next/link";
 export function PricingTable() {
   return (
     <>
-      <div className="relative grid gird-cols-1 gap-8 mt-16 lg:grid-cols-3">
+      <div className="relative grid gird-cols-1 gap-8 mt-16 lg:grid-cols-3 ">
         {PricingPlans.map((item) => (
           <Card
             key={item.id}

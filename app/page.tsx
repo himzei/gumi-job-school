@@ -18,7 +18,7 @@ export default async function Home() {
       <section className="w-full mx-auto pt-4 pb-16 ">
         <Features />
       </section>
-      <section className="w-full mx-auto py-16 bg-gray-100">
+      <section className="w-full mx-auto py-16 bg-gray-100 dark:bg-muted">
         <div className="max-w-7xl w-full mx-auto">
           <div>
             <TitleRotate

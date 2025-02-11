@@ -69,7 +69,7 @@ export default function ListCarousel() {
           {/* 컨테이너 */}
           <div
             ref={ref}
-            className="relative max-w-7xl w-full p-2 bg-white overflow-hidden "
+            className="relative max-w-7xl w-full p-2 bg-white dark:bg-muted overflow-hidden "
           >
             <motion.div
               animate={{
