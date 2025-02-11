@@ -1,18 +1,6 @@
 import prisma from "@/app/utils/db";
-import Image from "next/image";
 import { notFound } from "next/navigation";
-import Logo from "@/public/logo_s.png";
-import { ThemeToggle } from "@/app/components/dashboard/ThemeToggle";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import DefaultImage from "@/public/default.png";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { ItemContainer } from "@/app/components/blogs/ItemContainer";
 
 interface iAppProps {
   params: Promise<{ name: string }>;
@@ -33,6 +21,12 @@ async function getData(subDir: string) {
           createdAt: true,
           slug: true,
           id: true,
+          articleContent: true,
+          Site: {
+            select: {
+              subdirectory: true,
+            },
+          },
         },
         orderBy: {
           createdAt: "desc",
@@ -51,30 +45,23 @@ async function getData(subDir: string) {
 export default async function BlogIndexPage({ params }: iAppProps) {
   const { name } = await params;
   const data = await getData(name);
+  console.log(name);
   return (
     <>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:gap-2">
         {data.posts.map((item) => (
-          <Card key={item.id}>
-            <Image
-              src={item.image ?? DefaultImage}
-              alt={item.title}
-              className="rounded-t-lg object-cover w-full h-[200px] "
-              width={400}
-              height={200}
-            />
-            <CardHeader>
-              <CardTitle className="truncate">{item.title}</CardTitle>
-              <CardDescription className="line-clamp-3">
-                {item.smallDescription}
-              </CardDescription>
-            </CardHeader>
-            <CardFooter>
-              <Button asChild className="w-full">
-                <Link href={`/blog/${name}/${item.slug}`}>자세히보기</Link>
-              </Button>
-            </CardFooter>
-          </Card>
+          <ItemContainer
+            key={item.id}
+            id={item.id}
+            articleContent={item.articleContent}
+            title={item.title}
+            smallDescription={item.smallDescription}
+            image={item.image}
+            createdAt={item.createdAt}
+            slug={item.slug}
+            subName={name}
+            subdirectory={item.Site?.subdirectory}
+          />
         ))}
       </div>
     </>

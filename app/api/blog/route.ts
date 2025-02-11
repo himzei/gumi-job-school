@@ -14,6 +14,7 @@ export async function GET() {
       Site: {
         select: {
           name: true,
+          subdirectory: true,
         },
       },
     },

@@ -15,6 +15,7 @@ async function getPostData() {
       Site: {
         select: {
           name: true,
+          subdirectory: true,
         },
       },
     },
@@ -46,6 +47,7 @@ export default async function BlogsPage() {
             createdAt={item.createdAt}
             slug={item.slug}
             subName={item.Site?.name as string}
+            subdirectory={item.Site?.subdirectory}
           />
         ))}
       </div>

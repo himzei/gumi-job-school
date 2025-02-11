@@ -22,7 +22,7 @@ async function getData(userId: string) {
       orderBy: {
         createdAt: "desc",
       },
-      take: 3,
+      take: 6,
     }),
     prisma.post.findMany({
       where: {
@@ -31,7 +31,6 @@ async function getData(userId: string) {
       orderBy: {
         createdAt: "desc",
       },
-      take: 3,
     }),
   ]);
 
@@ -44,9 +43,9 @@ export default async function DashboardIndexPage() {
   return (
     <div>
       {/*  */}
-      <h1 className="text-2xl font-semibold mb-5">your sites</h1>
+      <h1 className="text-2xl font-semibold mb-5">블로그 사이트(카테고리)</h1>
       {sites.length > 0 ? (
-        <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
+        <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {sites.map((item) => (
             <Card key={item.id}>
               <Image
@@ -62,7 +61,7 @@ export default async function DashboardIndexPage() {
                   {item.description}
                 </CardDescription>
               </CardHeader>
-              <CardFooter>
+              <CardFooter className="px-4">
                 <Button asChild className="w-full">
                   <Link href={`/dashboard/sites/${item.id}`}>자세히보기</Link>
                 </Button>
@@ -79,9 +78,9 @@ export default async function DashboardIndexPage() {
         />
       )}
       {/*  */}
-      <h1 className="text-2xl mt-10 mb-5 font-semibold">Recent Articles</h1>
+      <h1 className="text-2xl mt-10 mb-5 font-semibold">블로그 게시글</h1>
       {articles.length > 0 ? (
-        <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
+        <div className="grid grid-cols-1  gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {articles.map((item) => (
             <Card key={item.id}>
               <Image
@@ -93,14 +92,14 @@ export default async function DashboardIndexPage() {
               />
               <CardHeader>
                 <CardTitle className="truncate">{item.title}</CardTitle>
-                <CardDescription className="line-clamp-3">
+                <CardDescription className="line-clamp-3 min-h-[60px]">
                   {item.smallDescription}
                 </CardDescription>
               </CardHeader>
-              <CardFooter>
+              <CardFooter className="px-4">
                 <Button asChild className="w-full">
                   <Link href={`/dashboard/sites/${item.siteId}/${item.id}`}>
-                    edit article
+                    게시글 수정
                   </Link>
                 </Button>
               </CardFooter>

@@ -34,7 +34,6 @@ async function getData(slug: string) {
 
 export default async function SlugRoute({ params }: iAppProps) {
   const { slug, name } = await params;
-
   const data = await getData(slug);
   return (
     <>
@@ -45,7 +44,7 @@ export default async function SlugRoute({ params }: iAppProps) {
               <ArrowLeft className="size-4" />
             </Link>
           </Button>
-          <h1 className="text-xl font-medium">Go Back</h1>
+          <h1 className="text-xl font-medium">블로그로 돌아가기</h1>
         </div>
 
         <div className="flex flex-col items-center justify-center mb-10 max-w-5xl mx-auto">

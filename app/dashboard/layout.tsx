@@ -16,19 +16,14 @@ import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 export const navLinks = [
   {
-    name: "Dashboard",
+    name: "대시보드",
     href: "/dashboard",
     icon: Home,
   },
   {
-    name: "Sites",
+    name: "블로그사이트",
     href: "/dashboard/sites",
     icon: Globe,
-  },
-  {
-    name: "Pricing",
-    href: "/dashboard/pricing",
-    icon: DollarSign,
   },
 ];
 

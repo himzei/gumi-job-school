@@ -86,6 +86,7 @@ export default function ListCarousel() {
                   smallDescription={item.smallDescription}
                   slug={item.slug}
                   subName={item.Site?.name as string}
+                  subdirectory={item.Site?.subdirectory}
                 />
               ))}
             </motion.div>
