@@ -1,11 +1,23 @@
 "use client";
 
-import { navLinks } from "@/app/dashboard/layout";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Globe, Home } from "lucide-react";
 
 export function DashboardItems() {
+  const navLinks = [
+    {
+      name: "대시보드",
+      href: "/dashboard",
+      icon: Home,
+    },
+    {
+      name: "블로그사이트",
+      href: "/dashboard/sites",
+      icon: Globe,
+    },
+  ];
   const pathname = usePathname();
   return (
     <>
