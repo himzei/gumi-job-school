@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
+import { statusDate } from "../utils/dateToStatus";
 
 export default function CoursesPage() {
   return (
@@ -35,9 +36,12 @@ export default function CoursesPage() {
             {PricingPlans.map((item, i) => (
               <TableRow key={item.id} className="">
                 <TableCell className="font-medium text-center">
-                  <p className="rounded-full bg-primary/20 px-2 py-1 text-xs leading-5 text-primary">
-                    모집중
-                  </p>
+                  {statusDate(
+                    item?.recruit?.split("~")[0] as string,
+                    item?.recruit?.split("~")[1] as string,
+                    item?.release?.split("~")[0] as string,
+                    item?.release?.split("~")[1] as string
+                  )}
                 </TableCell>
                 <TableCell className="w-[240px] h-[320px] object-cover">
                   {" "}

@@ -27,8 +27,8 @@ export const PricingPlans: iAppProps[] = [
     ],
     priceTitle: "본인부담금 없음",
     href: "/courses/course01",
-    recruit: "2024.12.30. ~ 2025.1.10",
-    release: "2024.1.10. ~ 2025.3.28",
+    recruit: "2024.12.30. ~ 2025.1.10.",
+    release: "2025.1.10. ~ 2025.3.28.",
     posterImg: Poster01,
   },
   {
@@ -43,8 +43,8 @@ export const PricingPlans: iAppProps[] = [
     ],
     priceTitle: "200,000원",
     href: "/courses/course02",
-    recruit: "2024.12.30. ~ 2025.1.10",
-    release: "2024.1.10. ~ 2025.3.28",
+    recruit: "2024.12.30. ~ 2025.1.10.",
+    release: "2024.1.10. ~ 2024.3.28.",
     posterImg: Poster02,
   },
   {
@@ -59,8 +59,8 @@ export const PricingPlans: iAppProps[] = [
     ],
     priceTitle: "200,000원",
     href: "/courses/course03",
-    recruit: "2024.12.30. ~ 2025.1.10",
-    release: "2024.1.10. ~ 2025.3.28",
+    recruit: "2025.1.10. ~ 2025.3.28.",
+    release: "2026.1.10. ~ 2026.3.28.",
     posterImg: Poster01,
   },
 ];
