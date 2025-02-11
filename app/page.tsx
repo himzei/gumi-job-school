@@ -20,7 +20,7 @@ export default async function Home() {
         <MainSlide />
       </section>
 
-      <section className="w-full mx-auto pt-4 pb-16 border-t border-muted">
+      <section className="w-full mx-auto pt-4 pb-16 ">
         <Features />
       </section>
       <section className="w-full mx-auto py-16 bg-gray-100">

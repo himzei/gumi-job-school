@@ -27,20 +27,9 @@ export function ProfileDropdown() {
     handleUserProfile();
   }, []);
 
-  console.log(user);
   return (
     <>
-      {!user?.id ? (
-        <div className="hidden md:flex uppercase h-full px-2 items-center space-x-2">
-          <LoginLink>
-            <span>login</span>
-          </LoginLink>
-          <span className="-translate-y-[1px]">|</span>
-          <RegisterLink>
-            <span>Join</span>
-          </RegisterLink>
-        </div>
-      ) : (
+      {user ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
             <div className="rounded-full border px-2 py-2 lg:px-4 lg:py-2 flex items-center gap-x-3">
@@ -75,6 +64,16 @@ export function ProfileDropdown() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+      ) : (
+        <div className="hidden md:flex uppercase h-full px-2 items-center space-x-2">
+          <LoginLink>
+            <span>login</span>
+          </LoginLink>
+          <span className="-translate-y-[1px]">|</span>
+          <RegisterLink>
+            <span>Join</span>
+          </RegisterLink>
+        </div>
       )}
     </>
   );

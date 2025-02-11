@@ -61,7 +61,7 @@ export default function Features() {
       </div>
       <section>
         {/* 본문1 */}
-        <div className="w-full max-w-7xl flex items-center flex-col space-y-8 p-16 border-4 border-[#c6a972]/30 border-dashed rounded-xl mx-auto">
+        <div className="w-full max-w-7xl flex items-center flex-col space-y-8 mx-auto">
           <div className=" w-full flex mobile:flex-col tablet:flex-row gap-8 relative">
             {itemLists1.map((item, i) => (
               <div
