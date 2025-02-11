@@ -40,7 +40,7 @@ export default async function SlugRoute({ params }: iAppProps) {
       <div className="w-full max-w-7xl flex flex-col">
         <div className="flex items-center gap-x-3 pb-5">
           <Button size="icon" variant="outline" asChild>
-            <Link href={`/blog/${name}`}>
+            <Link href={`/blog`}>
               <ArrowLeft className="size-4" />
             </Link>
           </Button>
