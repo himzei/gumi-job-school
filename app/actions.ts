@@ -240,7 +240,41 @@ export async function SendMailAction(prevState: any, formData: FormData) {
       from: process.env.MY_EMAIL,
       to: process.env.MY_EMAIL,
       subject: `[한국직업교육학원 상담신청서] ${name} (${email})`,
-      html: `<p>${message}</p>`,
+      html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background-color: #f9f9f9;">
+    
+    <h2 style="color: #333; text-align: center;">📩 한국직업교육학원 상담 신청서</h2>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <tr>
+        <th style="text-align: left; padding: 10px; background-color: #007bff; color: white; border-radius: 5px 5px 0 0;">신청자 정보</th>
+      </tr>
+      <tr>
+        <td style="padding: 10px; background-color: #ffffff;">
+          <strong>이름:</strong> ${name} <br>
+          <strong>이메일:</strong> ${email} <br>
+          <strong>전화번호:</strong> ${phone}
+        </td>
+      </tr>
+    </table>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <tr>
+        <th style="text-align: left; padding: 10px; background-color: #28a745; color: white; border-radius: 5px 5px 0 0;">상담 내용</th>
+      </tr>
+      <tr>
+        <td style="padding: 15px; background-color: #ffffff;">
+          <p style="white-space: pre-line; font-size: 14px; color: #333;">${message}</p>
+        </td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 20px; font-size: 12px; color: #555; text-align: center;">
+      ⓒ 한국직업교육학원 | 본 메일은 자동 발송되었습니다.
+    </p>
+
+  </div>
+      `,
     });
     console.log("이메일 전송 성공");
     return {

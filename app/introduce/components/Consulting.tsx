@@ -18,6 +18,8 @@ import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { EmailSchema } from "@/app/utils/zodSchemas";
 import { toast } from "sonner";
+import { Checkbox } from "@/components/ui/checkbox";
+import { PrivatePolicy } from "@/app/components/PrivatePolicy";
 
 const initialState = {
   message: "",
@@ -39,7 +41,6 @@ export default function Consulting() {
     shouldRevalidate: "onInput",
   });
 
-  console.log(lastResult, "asasasas");
   useEffect(() => {
     if (lastResult.status === "success") {
       toast.success("메세지가 성공적으로 전송되었습니다.");
@@ -49,7 +50,7 @@ export default function Consulting() {
     <>
       <div className="flex justify-center max-w-xl w-full mx-auto gap-8">
         {/* 본문 */}
-        <div className="w-full mx-auto py-16 bg-white px-8 rounded-lg shadow-lg">
+        <div className="w-full mx-auto py-16 bg-muted px-8 rounded-lg shadow-lg">
           <div className="flex flex-col space-y-12">
             <div className="space-y-4">
               <TitleSection
@@ -90,14 +91,17 @@ export default function Consulting() {
                     key={fields.email.key}
                     defaultValue={fields.email.initialValue}
                   />
-                  <p className="text-red-500 text-sm">{fields.phone.errors}</p>
+                  <p className="text-red-500 text-sm">{fields.email.errors}</p>
                 </div>
                 <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="희망하는 과정을 선택해주세요" />
+                  <SelectTrigger className="w-full ">
+                    <SelectValue
+                      placeholder="희망하는 과정을 선택해주세요"
+                      className=" placeholder:text-muted-foreground"
+                    />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="과정1">
+                    <SelectItem value="컴퓨터활용능력을 기반으로 한 사무관리원 양성과정">
                       컴퓨터활용능력을 기반으로 한 사무관리원 양성과정
                     </SelectItem>
                     <SelectItem value="과정2">과정2</SelectItem>
@@ -116,16 +120,25 @@ export default function Consulting() {
                     {fields.message.errors}
                   </p>
                 </div>
-                <div className="flex w-full h-full items-center justify-between border border-gray-200 px-2 py-2">
-                  <div className="flex items-center space-x-2 cursor-pointer">
-                    <div className="w-5 h-5 border border-gray-400"></div>
-                    <p className="text-sm text-gray-700">
-                      개인정보처리방침 동의합니다
-                    </p>
+                <div className="grid gap-2">
+                  <div className="flex w-full h-full items-center justify-between border border-gray-200 px-2 py-2">
+                    <div className="flex items-center space-x-2 cursor-pointer">
+                      <Checkbox
+                        name={fields.private.name}
+                        key={fields.private.key}
+                        defaultValue={fields.private.initialValue}
+                      />
+                      <p className="text-sm text-muted-foreground">
+                        개인정보처리방침 동의합니다
+                      </p>
+                    </div>
+                    <div className="flex h-full items-center">
+                      <PrivatePolicy vType="outline" />
+                    </div>
                   </div>
-                  <div className="flex h-full items-center">
-                    <Button>내용보기</Button>
-                  </div>
+                  <p className="text-red-500 text-sm">
+                    {fields.private.errors}
+                  </p>
                 </div>
                 <SubmitButton
                   className="w-full"

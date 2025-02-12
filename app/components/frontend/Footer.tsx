@@ -3,17 +3,20 @@ import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import Link from "next/link";
+import { PrivatePolicy } from "../PrivatePolicy";
 
 export function Footer() {
   return (
     <div className="flex flex-col max-w-7xl w-full mx-auto py-8">
       <div className="flex justify-between">
-        <div className="flex text-sm font-light space-x-2 border-b border-gray-300 pb-4">
+        <div className="flex items-center text-sm font-light space-x-2 border-b border-gray-300 ">
           <Link href="/">
             <p>HOME</p>
           </Link>
           <span className="-translate-y-[1px]">|</span>
-          <p className="font-bold">개인정보취급방침</p>
+          <p className="font-bold">
+            <PrivatePolicy vType="ghost" />
+          </p>
           <span className="-translate-y-[1px]">|</span>
           <Link href="courses">
             <p>온라인 입학상담</p>
@@ -30,7 +33,7 @@ export function Footer() {
           <FaGoogle className="size-6" />
         </div>
       </div>
-      <div className="flex text-xs py-4 flex-col gap-2">
+      <div className="flex text-xs py-4 flex-col gap-2 text-muted-foreground">
         <p>
           한국직업교육학원 경북 구미시 구미중앙로27길 15, 2~3층(원평동) /
           대표자:조현국 / 사업자번호:310-94-05594 / 전화:054-471-3455
@@ -41,7 +44,7 @@ export function Footer() {
         </p>
       </div>
       <div>
-        <span className="text-xs">
+        <span className="text-xs text-muted-foreground">
           Copyright © 2025 한국직업교육학원 All Rights Reserved.
         </span>
       </div>

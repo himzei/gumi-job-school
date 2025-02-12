@@ -78,7 +78,7 @@ export default function Features() {
                   <h2 className="text-2xl tracking-tight font-bold group-hover:text-primary transition duration-500">
                     {item.title}
                   </h2>
-                  <p className="text-gray-700">{item.description}</p>
+                  <p className="text-muted-foreground">{item.description}</p>
                 </div>
                 {/* image */}
                 <div className="w-full h-20 relative pl-4">
