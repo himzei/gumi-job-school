@@ -9,7 +9,7 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import prisma from "../utils/db";
-import { Hero } from "./frontend/Hero";
+import { Hero, MobileMenu } from "./frontend/Hero";
 import { Award } from "lucide-react";
 
 export default async function Navbar() {
@@ -66,10 +66,9 @@ export default async function Navbar() {
               </h1>
             </Link>
           </div>
-          {/* <MobileMenu /> */}
 
           {/* 3. 테마토글 */}
-          <div className="px-4 h-full flex md:space-x-2 items-center z-10">
+          <div className="px-4 h-full flex space-x-2 items-center z-10">
             <ThemeToggle />
             {!user ? (
               <div className="hidden md:flex uppercase h-full px-2 items-center space-x-2">
@@ -84,6 +83,7 @@ export default async function Navbar() {
             ) : (
               <ProfileDropdown profileImage={userData?.profileImage} />
             )}
+            <MobileMenu />
           </div>
         </div>
       </div>

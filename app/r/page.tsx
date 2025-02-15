@@ -61,16 +61,16 @@ export default async function RedditHome({
   const { page } = await searchParams;
 
   return (
-    <div className="max-w-7xl mx-auto flex gap-x-10 my-16">
+    <div className="max-w-7xl mx-auto flex flex-col-reverse gap-y-10 md:flex-row gap-x-10 my-16">
       {/* Left Side */}
-      <div className="w-[65%] flex flex-col gap-y-5">
+      <div className="w-full px-4 md:px-0 md:w-[65%] flex flex-col gap-y-5">
         <CreatePostCard />
         <Suspense fallback={<SuspenseCard key={page} />}>
           <ShowItems searchParams={searchParams} />
         </Suspense>
       </div>
       {/* Right Side */}
-      <div className="w-[35%] flex flex-col space-y-5">
+      <div className=" flex w-full px-4 md:px-0 md:w-[35%] flex-col space-y-5">
         <Card>
           <Image src={Banner} alt="Banner" />
           <div className="p-2">

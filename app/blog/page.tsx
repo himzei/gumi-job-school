@@ -61,7 +61,7 @@ export default async function BlogsPage() {
         </TabsList>
 
         <TabsContent value="전체" className="border-t ">
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:gap-2">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-4 lg:gap-2 px-2 py-2">
             {allPosts.map((item) => (
               <ItemContainer
                 key={item.id}

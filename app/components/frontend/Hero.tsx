@@ -1,27 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { FaSearch } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import { MdArrowForwardIos } from "react-icons/md";
 import { MenuOpenContext } from "./MenuOpenContext";
 import NavLink from "./NavLink";
+import { Menu } from "lucide-react";
 
-const MobileMenuLink = ({ menu }: any) => {
+const MobileMenuLink = ({ menu, setMobileOpen }: any) => {
   return (
     <Link href={menu.href}>
-      <div className="relative w-full flex justify-between items-center group">
-        <div className="text-neutral-300 duration-300 group-hover:text-white uppercase text-lg py-2.5">
+      <div
+        className="relative w-full flex justify-between items-center group"
+        onClick={() => setMobileOpen(false)}
+      >
+        <div className=" text-neutral-300 duration-300 group-hover:text-white uppercase text-lg py-2.5">
           {menu.text}
         </div>
-        <div className="text-red-600 text-xl font-semibold">
+        <div className="text-white text-xl font-semibold">
           <MdArrowForwardIos />
         </div>
 
         {/* 밑줄 */}
-        <span className="absolute left-0 right-8 bottom-0 origin-left transition-transform h-[1px] bg-neutral-600 duration-300 ease-out scale-x-0 group-hover:scale-x-100" />
+        <span className="absolute left-0 right-8 bottom-0 origin-left transition-transform h-[1px] bg-primary duration-300 ease-out scale-x-0 group-hover:scale-x-100" />
       </div>
     </Link>
   );
@@ -30,35 +33,26 @@ const MobileMenuLink = ({ menu }: any) => {
 export const MobileMenu = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <div className="block md:hidden z-30">
-      <button
-        className="block text-2xl px-2"
-        onClick={() => setMobileOpen(true)}
-      >
-        <FiMenu />
-      </button>
+    <div className="block md:hidden z-40">
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
-            initial={{ x: "-100vw" }}
+            initial={{ x: "100vw" }}
             animate={{ x: 0 }}
-            exit={{ x: "-100vw" }}
+            exit={{ x: "100vw" }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="fixed left-0 top-0 bottom-0 flex h-screen w-full flex-col justify-between bg-main-dark"
+            className="fixed right-0 top-0 bottom-0 flex h-screen flex-col justify-between bg-muted-foreground w-3/4"
           >
             {/* 1 위쪽 */}
             <div>
               {/* 1 */}
-              <div className="flex items-center justify-between p-3 border-b border-neutral-300">
+              <div className="flex h-24 items-center justify-end p-4 border-b border-neutral-300 ">
                 <button onClick={() => setMobileOpen(false)}>
-                  <FiX className="text-2xl text-white" />
+                  <FiX className="text-3xl text-white " />
                 </button>
-                <div className="text-white text-lg">
-                  <FaSearch />
-                </div>
               </div>
               {/* 위쪽 */}
-              <div className="bg-main-dark p-4">
+              <div className="p-4">
                 {MENUS.map((menu: any, index: any) => (
                   <MobileMenuLink
                     key={index}
@@ -70,24 +64,16 @@ export const MobileMenu = () => {
             </div>
 
             {/* 아래쪽 */}
-            <div className="text-white px-4 py-4 flex flex-col">
-              {/* 1 */}
-              <div className="py-8 px-2 text-yellow-600 border-t border-neutral-500">
-                <h4>구미회계·컴퓨터</h4>
-                <div className="w-full flex justify-between py-4">
-                  <h3 className="text-white text-lg">KEN</h3>
-
-                  <div className="text-red-600 text-xl font-semibold">
-                    <MdArrowForwardIos />
-                  </div>
-                </div>
-              </div>
-              {/* 2 */}
-              <div className="flex justify-around border-t border-neutral-500 py-8 "></div>
-            </div>
           </motion.nav>
         )}
       </AnimatePresence>
+      <button
+        className="rounded-lg border px-2 py-2.5 flex items-center space-x-1"
+        onClick={() => setMobileOpen(true)}
+      >
+        <Menu className="size-5" />
+        <span className="text-md">MENU</span>
+      </button>
     </div>
   );
 };
@@ -150,7 +136,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
-                className="absolute w-full flex justify-center bg-white  shadow-md"
+                className="absolute w-full flex justify-center bg-white shadow-md"
               >
                 <div className="absolute -top-2 left-0 right-0 h-6 bg-tranparent" />
 

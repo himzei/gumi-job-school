@@ -5,7 +5,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MenuIcon } from "lucide-react";
+import { UserPen } from "lucide-react";
 import Link from "next/link";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
@@ -18,12 +18,12 @@ export function ProfileDropdown({ profileImage }: iAppProps) {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <div className="rounded-full border px-2 py-2 lg:px-4 lg:py-2 flex items-center gap-x-3">
-            <MenuIcon className="w-6 h-6 lg:w-5 lg:h-5" />
+          <div className="rounded-lg border px-1 py-1 lg:px-2 lg:py-1 flex items-center gap-x-3">
+            <UserPen className="size-5 lg:size-6" />
             <img
               src={profileImage as string}
               alt="avatar of user"
-              className="rounded-full h-8 w-8 hidden lg:block"
+              className="rounded-full h-8 w-8"
             />
           </div>
         </DropdownMenuTrigger>

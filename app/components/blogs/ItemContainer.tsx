@@ -31,7 +31,7 @@ export function ItemContainer({
   subdirectory,
 }: iAppProps) {
   return (
-    <Card key={id} className="w-[300px] h-[400px] m-2 shrink-0">
+    <Card key={id} className="w-full md:w-[300px] md:h-[400px] shrink-0">
       <Image
         src={image ?? DefaultImage}
         alt={title}

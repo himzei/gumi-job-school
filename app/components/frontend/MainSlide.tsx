@@ -2,12 +2,6 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaPinterest,
-} from "react-icons/fa";
-
 import MainImg1 from "@/public/logo_s.png";
 import { NoticeContact } from "./NoticeContact";
 import Image from "next/image";
@@ -155,7 +149,7 @@ const Card = ({
 };
 
 const Cards = ({ testimonials, selected, setSelected }: any) => (
-  <div className="relative h-[450px] lg:h-[500px] ">
+  <div className="relative h-[600px] md:h-[550px] ">
     {testimonials.map((item: any, index: any) => (
       <Card
         {...item}
@@ -179,7 +173,7 @@ export default function MainSlide() {
         selected={selected}
       />
       <div className="w-full flex justify-center  ">
-        <div className="max-w-7xl w-full py-8 grid grid-cols-1 md:grid-cols-[3fr_1fr]">
+        <div className="max-w-7xl w-full  grid grid-cols-1 md:grid-cols-[3fr_1fr]">
           <div className="-translate-y-8 md:-translate-y-14 z-10 bg-white dark:bg-muted md:pl-4 h-16">
             <SelectBtns
               numTracks={testimonials}
@@ -188,11 +182,6 @@ export default function MainSlide() {
             />
           </div>
           {/* 아이콘 */}
-          <div className="flex w-full h-10 items-center justify-end space-x-4 text-2xl text-gray-500">
-            {/* <FaFacebookSquare /> */}
-            {/* <FaInstagramSquare /> */}
-            {/* <FaPinterest /> */}{" "}
-          </div>
         </div>
       </div>
     </section>
