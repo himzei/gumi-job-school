@@ -59,9 +59,9 @@ export default async function Navbar() {
                 alt="logo"
                 width={60}
                 height={60}
-                className="size-10 md:size-16"
+                className="size-12 md:size-16"
               />
-              <h1 className="text-xl md:text-4xl font-bold tracking-tighter">
+              <h1 className="text-xl hidden md:flex md:text-4xl font-bold tracking-tighter">
                 한국<span className="text-primary">직업</span>교육학원
               </h1>
             </Link>

@@ -33,7 +33,7 @@ const MobileMenuLink = ({ menu, setMobileOpen }: any) => {
 export const MobileMenu = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <div className="block md:hidden z-40">
+    <div className="block md:hidden">
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
@@ -41,25 +41,38 @@ export const MobileMenu = () => {
             animate={{ x: 0 }}
             exit={{ x: "100vw" }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="fixed right-0 top-0 bottom-0 flex h-screen flex-col justify-between bg-muted-foreground w-3/4"
+            className="absolute right-0 top-0 bottom-0 flex h-screen flex-col justify-between z-10 bg-muted-foreground w-4/5"
           >
             {/* 1 위쪽 */}
-            <div>
-              {/* 1 */}
-              <div className="flex h-24 items-center justify-end p-4 border-b border-neutral-300 ">
-                <button onClick={() => setMobileOpen(false)}>
-                  <FiX className="text-3xl text-white " />
-                </button>
+            <div className="flex flex-col h-screen justify-between">
+              <div>
+                {/* 1 */}
+                <div className="flex h-24 items-center justify-between p-4 border-b border-neutral-300 ">
+                  <h1 className="text-white font-semibold text-2xl">
+                    한국<span className="text-primary">직업</span>교육학원
+                  </h1>
+                  <button onClick={() => setMobileOpen(false)}>
+                    <FiX className="text-3xl text-white " />
+                  </button>
+                </div>
+                {/* 위쪽 */}
+                <div className="p-4">
+                  {MENUS.map((menu: any, index: any) => (
+                    <MobileMenuLink
+                      key={index}
+                      menu={menu}
+                      setMobileOpen={setMobileOpen}
+                    />
+                  ))}
+                </div>
               </div>
-              {/* 위쪽 */}
-              <div className="p-4">
-                {MENUS.map((menu: any, index: any) => (
-                  <MobileMenuLink
-                    key={index}
-                    menu={menu}
-                    setMobileOpen={setMobileOpen}
-                  />
-                ))}
+
+              <div className="px-4 border-t border-muted py-5 flex flex-col space-y-1 items-end text-muted">
+                <p>
+                  한국직업교육학원 경북 구미시 구미중앙로27길 15, 2~3층(원평동)
+                </p>
+
+                <p> 전화:054-471-3455</p>
               </div>
             </div>
 
