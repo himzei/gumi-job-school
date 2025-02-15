@@ -56,13 +56,20 @@ export default function Features() {
     <div className="w-full py-8 relative ">
       <div className="w-full h-[500px] absolute bottom-0 -z-10 ">
         <div className="w-full h-full">
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-indigo-500/0 from-10% via-sky-500/20 via-30% to-emerald-500/0 to-90%" />
+          <div className="absolute  inset-0 w-full h-full bg-gradient-to-b from-indigo-500/0 from-10% via-sky-500/20 via-30% to-emerald-500/0 to-90%" />
         </div>
       </div>
       <section>
         {/* 본문1 */}
         <div className="w-full max-w-7xl flex items-center flex-col space-y-8 mx-auto">
-          <div className=" w-full flex mobile:flex-col tablet:flex-row gap-8 relative">
+          <div className=" w-full px-4 flex flex-col md:flex-row gap-8 relative">
+            <div className="relative lg:absolute  top-0 right-0">
+              <TitleSection
+                section="feature"
+                mainTitle="훈련생을 위한 한국직업교육학원!"
+                subTitle="교육과 취업을 동시에 잡으세요!!"
+              />
+            </div>
             {itemLists1.map((item, i) => (
               <div
                 key={i}
@@ -92,17 +99,10 @@ export default function Features() {
                 </div>
               </div>
             ))}
-            <div className="absolute  top-0 right-0">
-              <TitleSection
-                section="feature"
-                mainTitle="훈련생을 위한 한국직업교육학원!"
-                subTitle="교육과 취업을 동시에 잡으세요!!"
-              />
-            </div>
           </div>
 
           {/* 본문2 */}
-          <div className="w-full flex mobile:flex-col tablet:flex-row justify-end gap-8">
+          <div className="w-full px-4 flex flex-col justify-center md:flex-row md:justify-end gap-8">
             {itemLists2.map((item, i) => (
               <div
                 key={i}

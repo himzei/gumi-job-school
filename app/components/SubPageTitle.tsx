@@ -26,7 +26,7 @@ export function SubPageTitle({
         )}
       >
         <div
-          className="w-[55%] h-full"
+          className="w-[55%] h-full hidden md:flex"
           style={{
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 20% 100%)",
           }}

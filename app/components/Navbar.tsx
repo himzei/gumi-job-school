@@ -34,9 +34,9 @@ export default async function Navbar() {
   return (
     <>
       <div className="max-w-7xl mx-auto w-full h-24 flex justify-center z-10 ">
-        <div className="relative w-full h-full flex justify-between items-center text-xs">
+        <div className="relative w-full h-full flex justify-end md:justify-between items-center text-xs">
           {/* 1. 로그인 회원가입 */}
-          <div className="flex space-x-2">
+          <div className=" space-x-2 hidden md:flex">
             <div className="flex items-center w-8 bg-primary rounded-lg p-0">
               <Award className="size-8 text-white" />
             </div>
@@ -52,10 +52,16 @@ export default async function Navbar() {
           </div>
 
           {/* 2. 로고 */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute top-1/2 left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2">
             <Link href="/" className="flex items-center space-x-2">
-              <Image src={Logo} alt="logo" width={60} height={60} />
-              <h1 className="text-4xl font-bold tracking-tighter">
+              <Image
+                src={Logo}
+                alt="logo"
+                width={60}
+                height={60}
+                className="size-10 md:size-16"
+              />
+              <h1 className="text-xl md:text-4xl font-bold tracking-tighter">
                 한국<span className="text-primary">직업</span>교육학원
               </h1>
             </Link>

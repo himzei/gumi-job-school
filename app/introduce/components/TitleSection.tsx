@@ -14,7 +14,7 @@ export default function TitleSection({
   return (
     <div className="w-full flex flex-col space-y-4 tracking-tighter">
       <h2 className={`uppercase font-semibold text-primary`}>{section}</h2>
-      <div className={`trackging-tight text-3xl`}>
+      <div className={`trackging-tight text-2xl md:text-3xl`}>
         <p className="font-light text-muted-foreground">{mainTitle}</p>
         <p className="font-bold">{subTitle}</p>
         <p>{subTitle2}</p>

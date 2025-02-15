@@ -61,7 +61,7 @@ export async function CommunityMain() {
         <h2 className="text-3xl font-bold uppercase py-2 text-white text-center">
           커뮤니티
         </h2>
-        <div className="flex max-w-xl gap-2 mx-auto my-2">
+        <div className="flex flex-wrap justify-center max-w-xl gap-2 mx-auto my-2 px-4">
           {tags.map((item) => (
             <Link key={item.id} href={`/r/${item.name}`}>
               <p className="bg-muted px-2 py-1 rounded-xl text-sm transition duration-300 hover:bg-muted-foreground/80 hover:text-white">
@@ -71,7 +71,7 @@ export async function CommunityMain() {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-2 grid-rows-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
         {data.map((post) => (
           <div key={post.id} className="w-full">
             <PostCard
