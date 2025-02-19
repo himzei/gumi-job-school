@@ -61,7 +61,7 @@ export default function Consulting() {
               />
               <div className="flex flex-col">
                 <h2 className="font-semibold text-gray-500">교육문의전화</h2>
-                <p className="text-3xl">054)471-3455</p>
+                <p className="text-3xl">054)471-5677</p>
               </div>
             </div>
             <form id={form.id} onSubmit={form.onSubmit} action={action}>
