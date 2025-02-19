@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "한국직업교육학원",
     description:
       "경북 구미 훈련생을 위한 최고의 교육 기회! 교육과 취업을 동시에 잡으세요!",
-    url: "https://gumi-job-school.vercel.app", // 실제 URL로 변경
+    url: "https://www.krcea.com", // 실제 URL로 변경
     siteName: "한국직업교육학원",
     // images: [
     //   {
