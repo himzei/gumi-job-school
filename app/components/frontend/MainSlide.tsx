@@ -44,7 +44,7 @@ const testimonials = [
     // description: "전화상담, 카카오상담, 메일상담 OKOKOK",
     // name: "상담신청하기",
     title: "유익한 교육 정보와 소식을 확인하세요",
-    link: "https://www.kakao.com",
+    link: "https://www.krcea.com/blog/news/1740236673668",
   },
   {
     image: MainImg1,
@@ -132,14 +132,13 @@ const Card = ({
         onClick={() => setSelected(position)}
         className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 flex flex-col items-center justify-center"
       >
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center">
+        <div className="absolute top-0 left-0 w-full h-full flex justify-center ">
           <Link href={link}>
             <Image
               src={back}
-              width={1920}
-              height={500}
+              fill
               alt="lima"
-              className="w-full h-full object-cover object-center "
+              className="w-full h-auto object-center object-cover"
             />
           </Link>
         </div>
@@ -149,7 +148,7 @@ const Card = ({
 };
 
 const Cards = ({ testimonials, selected, setSelected }: any) => (
-  <div className="relative h-[600px] md:h-[550px] -z-10">
+  <div className="relative w-full h-[600px] md:h-[550px] -z-10">
     {testimonials.map((item: any, index: any) => (
       <Card
         {...item}
