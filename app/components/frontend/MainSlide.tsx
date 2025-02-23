@@ -37,14 +37,14 @@ const testimonials = [
     description: "몸값배팅! 희망연봉, 얼마까지 상도의?",
     name: "폼나게 이직하자",
     title: "예비수강생들을 위한 특별한 맞춤상담",
-    link: "https://www.naver.com",
+    link: "https://www.krcea.com/introduce",
   },
   {
     image: MainImg1,
     back: MainSlide4,
     // description: "전화상담, 카카오상담, 메일상담 OKOKOK",
     // name: "상담신청하기",
-    title: "유익한 교육 정보와 소식을 확인하세요",
+    title: "수강생 합격후기 & 성과",
     link: "https://www.krcea.com/blog/news/1740236673668",
   },
   {
@@ -53,8 +53,8 @@ const testimonials = [
     // description:
     //   "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita sequi cupiditate harum repellendusda.",
     // name: "생생합격후기",
-    title: "SNS 해시테그 이벤트에 참여하세요",
-    link: "/blog/promotion/hee",
+    title: "SNS 해시테그 이벤트",
+    link: "https://www.krcea.com/blog/promotion/hee",
   },
 ];
 
