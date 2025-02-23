@@ -33,7 +33,7 @@ export default async function Navbar() {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto w-full h-24 flex justify-center z-10 ">
+      <div className="max-w-7xl mx-auto w-full h-24 flex justify-center z-20 ">
         <div className="relative w-full h-full flex justify-end md:justify-between items-center text-xs">
           {/* 1. 로그인 회원가입 */}
           <div className=" space-x-2 hidden md:flex">
@@ -83,7 +83,9 @@ export default async function Navbar() {
             ) : (
               <ProfileDropdown profileImage={userData?.profileImage} />
             )}
-            <MobileMenu />
+            <div className="z-50">
+              <MobileMenu />
+            </div>
           </div>
         </div>
       </div>

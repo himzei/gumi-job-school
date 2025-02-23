@@ -13,7 +13,7 @@ const MobileMenuLink = ({ menu, setMobileOpen }: any) => {
   return (
     <Link href={menu.href}>
       <div
-        className="relative w-full flex justify-between items-center group"
+        className="relative w-full flex justify-between items-center group z-90"
         onClick={() => setMobileOpen(false)}
       >
         <div className=" text-neutral-300 duration-300 group-hover:text-white uppercase text-lg py-2.5">
@@ -33,7 +33,7 @@ const MobileMenuLink = ({ menu, setMobileOpen }: any) => {
 export const MobileMenu = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <div className="block md:hidden">
+    <div className="block md:hidden z-90">
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
@@ -44,7 +44,7 @@ export const MobileMenu = () => {
             className="absolute right-0 top-0 bottom-0 flex h-screen flex-col justify-between z-10 bg-muted-foreground w-4/5"
           >
             {/* 1 위쪽 */}
-            <div className="flex flex-col h-screen justify-between">
+            <div className="flex flex-col h-screen justify-between z-10">
               <div>
                 {/* 1 */}
                 <div className="flex h-24 items-center justify-between p-4 border-b border-neutral-300 ">

@@ -11,6 +11,7 @@ import MainSlide3 from "@/public/introduce/003.png";
 import MainSlide4 from "@/public/introduce/004.png";
 import MainSlide5 from "@/public/introduce/005.png";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
@@ -133,22 +134,25 @@ const Card = ({
         className="absolute top-0 left-0 w-full min-h-full p-8 lg:p-12 flex flex-col items-center justify-center"
       >
         <div className="absolute top-0 left-0 w-full h-full flex justify-center ">
+          {/* <div className="absolute inset-0 bg-red-500 h-full w-full z-50" /> */}
           <Link href={link}>
             <Image
-              src={back}
               fill
+              src={back}
               alt="lima"
               className="w-full h-auto object-center object-cover"
             />
           </Link>
         </div>
+
+        {/* <div className="absolute left-0 right-0 top-0 w-full h-full" /> */}
       </motion.div>
     </div>
   );
 };
 
 const Cards = ({ testimonials, selected, setSelected }: any) => (
-  <div className="relative w-full h-[600px] md:h-[550px] -z-10">
+  <div className="relative w-full h-[600px] md:h-[550px] ">
     {testimonials.map((item: any, index: any) => (
       <Card
         {...item}
@@ -173,7 +177,7 @@ export default function MainSlide() {
       />
       <div className="w-full flex justify-center">
         <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-[3fr_1fr]">
-          <div className="-translate-y-8 md:-translate-y-14 bg-white dark:bg-black md:pl-4 h-16">
+          <div className=" bg-white dark:bg-black md:pl-4 h-16">
             <SelectBtns
               numTracks={testimonials}
               setSelected={setSelected}
