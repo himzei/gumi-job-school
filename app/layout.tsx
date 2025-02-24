@@ -42,6 +42,10 @@ export const metadata: Metadata = {
     description: "교육과 취업을 동시에 잡으세요!",
     // images: ["@/public/logo_s.png"],
   },
+  // <meta name="naver-site-verification" content="값" />으로 변환된다.
+  other: {
+    "naver-site-verification": "622c649a4d3e1fc72bce2e6d0babebc600482557",
+  },
 };
 
 export default function RootLayout({
