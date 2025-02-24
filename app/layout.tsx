@@ -26,14 +26,14 @@ export const metadata: Metadata = {
       "경북 구미 훈련생을 위한 최고의 교육 기회! 교육과 취업을 동시에 잡으세요!",
     url: "https://www.krcea.com", // 실제 URL로 변경
     siteName: "한국직업교육학원",
-    // images: [
-    //   {
-    //     url: "@/public/logo_s.png", // 이미지 경로
-    //     width: 1200,
-    //     height: 630,
-    //     alt: "한국직업교육학원",
-    //   },
-    // ],
+    images: [
+      {
+        url: "https://h38vngwx8h.ufs.sh/f/YGU4yJ0f4XMTDz4YKStRhfbTHLNI86lJCtG5W2309EsXxVir", // 이미지 경로
+        width: 650,
+        height: 320,
+        alt: "한국직업교육학원",
+      },
+    ],
     type: "website",
   },
   twitter: {
