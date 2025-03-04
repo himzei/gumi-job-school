@@ -1,16 +1,18 @@
 import Consulting from "@/app/introduce/components/Consulting";
 import Poster01 from "@/public/courses/001.jpg";
 import Image from "next/image";
+import { PricingPlans } from "../courseData";
 
 export default function Courses03() {
+  const data = PricingPlans[2];
   return (
     <>
       <div className="max-w-3xl w-full mx-auto mt-16">
         <h1 className="text-3xl font-light tracking-tight text-center">
-          빅데이터기반의 멀티사무관리원 양성과정
+          {data.cardTitle}
         </h1>
         <p className="text-muted-foreground text-center">
-          구미 회계 컴퓨터 학원 ADsP + 전산세무회계(FAT1급, TAT2급)
+          {data.cardDescription}
         </p>
       </div>
 
