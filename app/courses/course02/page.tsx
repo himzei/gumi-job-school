@@ -19,7 +19,7 @@ export default function Courses02() {
       <div className="w-full h-full">
         <div className="max-w-5xl w-full mx-auto my-16">
           <Image
-            src={Poster01}
+            src={data.posterImg}
             alt="poster01"
             width={1024}
             height={1443}

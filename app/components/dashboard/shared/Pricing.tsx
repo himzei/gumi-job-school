@@ -8,7 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Check } from "lucide-react";
+// import { Check } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function PricingTable() {
@@ -47,7 +48,14 @@ export function PricingTable() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="">{item.priceTitle}</p>
+              <Image
+                src={item.posterImg}
+                alt="poster01"
+                width={1024}
+                height={1443}
+                className="w-full h-full object-contain"
+              />
+              {/* <p className="">{item.priceTitle}</p>
               <ul className="mt-8 space-y-3 text-sm leading-6 text-muted-foreground">
                 {item.benefits.map((benefit, index) => (
                   <li key={index} className="flex gap-x-3">
@@ -55,7 +63,7 @@ export function PricingTable() {
                     {benefit}
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </CardContent>
             <CardFooter>
               {item.id === 1 ? (
