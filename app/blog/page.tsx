@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { ItemContainer } from "../components/blogs/ItemContainer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// 빌드 시 Prisma(정적 사전렌더)가 DB에 붙지 않아도 `next build`가 통과하도록 요청 시 렌더
+export const dynamic = "force-dynamic";
+
 async function getPostData() {
   const data = await prisma.site.findMany({
     select: {

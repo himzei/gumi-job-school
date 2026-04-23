@@ -7,6 +7,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JSONContent } from "novel";
 
+// Prisma DB가 빌드 환경에 없을 수 있으므로 정적 사전렌더 생략
+export const dynamic = "force-dynamic";
+
 interface iAppProps {
   params: Promise<{ slug: string; name?: string }>;
 }
