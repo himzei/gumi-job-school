@@ -1,16 +1,23 @@
 "use client"
 
+import { useEffect, useState, type ComponentProps } from "react"
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner"
 
-type ToasterProps = React.ComponentProps<typeof Sonner>
+type ToasterProps = ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const { theme } = useTheme()
+  // 마운트 전에는 theme이 불안정할 수 있어 서버/클라이언트 첫 렌더를 "system"으로 통일합니다.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  const resolvedTheme = (mounted ? theme : "system") ?? "system"
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={resolvedTheme as ToasterProps["theme"]}
       className="toaster group"
       toastOptions={{
         classNames: {

@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   },
   /* config options here */
   images: {
+    // Turbopack 개발 모드에서 정적 import 이미지를 최적화할 때 빈 버퍼로 실패하는 경우가 있어
+    // 개발 환경에서만 최적화를 끕니다. 프로덕션(next build)에서는 그대로 최적화됩니다.
+    unoptimized: process.env.NODE_ENV === "development",
     remotePatterns: [
       {
         protocol: "https",

@@ -1,9 +1,10 @@
 import prisma from "@/app/utils/db";
-import { stripe } from "@/app/utils/stripe";
+import { getStripe } from "@/app/utils/stripe";
 import { headers } from "next/headers";
 import Stripe from "stripe";
 
 export async function POST(req: Request) {
+  const stripe = getStripe();
   const body = await req.text();
 
   const signature = (await headers()).get("Stripe-Signature") as string;

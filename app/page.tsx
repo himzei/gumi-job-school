@@ -41,7 +41,7 @@ export default async function Home() {
           className="h-[300px]"
         />
 
-        <ListCarousel />
+        {/* <ListCarousel /> */}
       </section>
 
       <section

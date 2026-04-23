@@ -9,7 +9,7 @@ import {
 } from "./utils/zodSchemas";
 import prisma from "./utils/db";
 import { requireUser } from "./utils/requireUser";
-import { stripe } from "./utils/stripe";
+import { getStripe } from "./utils/stripe";
 import nodemailer from "nodemailer";
 import { Prisma, TypeOfVote } from "@prisma/client";
 import { JSONContent } from "@tiptap/react";
@@ -165,6 +165,7 @@ export async function DeleteSiteAction(formData: FormData) {
 
 export async function CreateSubscription() {
   const user = await requireUser();
+  const stripe = getStripe();
 
   let stripeUserId = await prisma.user.findUnique({
     where: {
